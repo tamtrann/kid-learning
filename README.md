@@ -1,1 +1,1 @@
-# smart-learning
+# kid-learning
