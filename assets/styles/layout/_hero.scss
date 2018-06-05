@@ -1,0 +1,26 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the hero of the site/application.
+// -----------------------------------------------------------------------------
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  min-height: 600px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+  &__heading {
+    max-width: 680px;
+  }
+
+  &__lead {
+    margin-bottom: 3rem;
+    max-width: 440px;
+    width: 100%;
+  }
+}
+

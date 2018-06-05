@@ -1,0 +1,34 @@
+// ------------------------------------------------------------------------------------------
+// This file contains all styles related to the button's basic style of the site/application.
+// ------------------------------------------------------------------------------------------
+
+.btn {
+  border-radius: 4px;
+  display: inline-block;
+  padding: 10px 30px;
+  text-decoration: none;
+
+  & + & {
+    margin-left: 1rem;
+  }
+
+  &--green {
+    border-color: $color-green;
+    color: $color-gray;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-green;
+    }
+  }
+
+  &--gray {
+    border-color: $color-gray;
+    color: $color-gray;
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-gray;
+    }
+  }
+}

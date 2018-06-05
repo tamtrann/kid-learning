@@ -1,0 +1,29 @@
+{
+  "results": [{
+      "category": "Geography",
+      "type": "multiple",
+      "question": "What is the capital of Jamaica?",
+      "answers": [
+        "San Juan",
+        "Port-au-Prince",
+        "Bridgetown",
+        "Kingston"
+      ],
+      "correct_answer": "Kingston",
+      "answer": ""
+    },
+    {
+      "category": "Entertainment: Books",
+      "type": "multiple",
+      "question": "Who wrote the children&#039;s story &quot;The Little Match Girl&quot;?",
+      "answers": [
+        "Charles Dickens",
+        "Lewis Carroll",
+        "Oscar Wilde",
+        "Hans Christian Andersen"
+      ],
+      "correct_answer": "Hans Christian Andersen",
+      "answer": ""
+    }
+  ]
+}

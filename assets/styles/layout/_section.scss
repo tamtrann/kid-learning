@@ -1,0 +1,19 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the section of the site/application.
+// -----------------------------------------------------------------------------
+
+.section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &--white {
+    color: $color-black;
+    background-color: $color-white;
+  }
+}

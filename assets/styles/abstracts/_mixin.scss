@@ -1,0 +1,74 @@
+@import
+  "../vendor/include-media";
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin baseline($font-size, $scale: 2) {
+  $rhythm: $base-line-height * $font-size / $scale;
+  $lines: ceil(($font-size + 0.001px) / $rhythm);
+  $line-height: $rhythm * $lines / $font-size;
+  $baseline-distance: ($line-height - $base-cap-height) / 2;
+
+  font-size: $font-size;
+  line-height: $line-height;
+  padding-top: $baseline-distance + em;
+  margin-bottom: $base-line-height - $baseline-distance + em;
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin flicker-fix {
+  transform: translate3d(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-full {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin flex-center {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
