@@ -1,14 +1,16 @@
 <template>
-  <el-container>
-    <el-header>
-    </el-header>
-    <el-main>
-      <nuxt/>
-    </el-main>
-    <el-footer>
-    </el-footer>
-  </el-container>
+  <vk-offcanvas-content>
+    <!-- <the-sidebar/> -->
+    <nuxt/>
+  </vk-offcanvas-content>
 </template>
 
-<style lang="scss">
-</style>
+<script>
+import TheSidebar from '~/components/TheSidebar'
+
+export default {
+  components: {
+    TheSidebar
+  }
+}
+</script>

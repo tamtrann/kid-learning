@@ -1,20 +1,23 @@
-export const state = () => ({questions: []})
+export const state = () => ({title: '', exerciseQuestions: [], timeLimitation: 0, grade: 0, submitted: false})
 
 export const mutations = {
-  fetch(state, payload) {
-    state.questions = payload.results.slice();
+  SET_QUESTIONS (state, payload) {
+    state.title = payload.title
+    state.exerciseQuestions = payload.exerciseQuestions.slice()
+    state.timeLimitation = payload.timeLimitation
   },
-  updateAnswer(state, payload) {
-    let questionIndex = state.questions.findIndex(question => question.question == payload.question);
-    state.questions[questionIndex].answer = payload.answer;
+  SET_GRADE (state, amount) {
+    state.grade = state.grade + amount
+  },
+  SUBMIT (state) {
+    state.submitted = true
   }
 }
 
 export const getters = {
-  questions: state => {
-    return state.questions;
-  },
-  score: state => {
-    return state.questions.filter(question => question.answer == question["correct_answer"]).length;
-  }
+  title: state => state.title,
+  exerciseQuestions: state => state.exerciseQuestions,
+  grade: state => state.grade,
+  submitted: state => state.submitted,
+  timeLimitation: state => state.timeLimitation
 }

@@ -3,32 +3,32 @@ export const state = () => ({
 })
 
 export const mutations = {
-  add(state, payload) {
+  add (state, payload) {
     state
       .notes
       .push({
         id: Math.random().toString(36).substr(2, 9),
-        note: payload.note
-      });
+        name: payload.note.name,
+        content: payload.note.content
+      })
   },
-  remove(state, payload) {
-    let noteIndex = state.notes.findIndex(function(note) {
-      return note.id == payload.id;
-    });
+  remove (state, payload) {
+    let noteIndex = state.notes.findIndex(function (note) {
+      return note.id === payload.id
+    })
     state
       .notes
-      .splice(noteIndex, 1);
+      .splice(noteIndex, 1)
   },
-  edit(state, payload) {
-    let noteIndex = state.notes.findIndex(function(note) {
-      return note.id == payload.id;
-    });
-    state.notes[noteIndex].note = payload.note;
+  edit (state, payload) {
+    let noteIndex = state.notes.findIndex(note => (note.id === payload.id))
+    state.notes[noteIndex].name = payload.note.name
+    state.notes[noteIndex].content = payload.note.content
   }
 }
 
 export const getters = {
-  notes(state) {
+  notes (state) {
     return state.notes
   }
 }

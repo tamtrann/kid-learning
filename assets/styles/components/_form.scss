@@ -1,0 +1,160 @@
+// ------------------------------------------------------------------------------------------
+// This file contains all styles related to the form's basic style of the site/application.
+// ------------------------------------------------------------------------------------------
+
+.el-input {
+  &__inner {
+    .el--warning & {
+      border-color: $color-red;
+    }
+
+    &:focus {
+      box-shadow: $box-shadow-normal;
+    }
+  }
+
+  &__suffix {
+    display: flex;
+  }
+
+  &-wrapper {
+    height: 70px;
+    margin-top: 15px;
+
+    &.hidden {
+      margin-bottom: -85px;
+      opacity: 0;
+    }
+  }
+}
+
+.el-textarea {
+  &__inner {
+    border-radius: 0;
+  }
+}
+
+.el-checkbox {
+  margin-right: rem(20);
+  margin-bottom: rem(5);
+
+  &__label {
+    font-size: $font-size-p;
+
+    .el-checkbox--success & {
+      color: $color-green;
+    }
+
+    .el-checkbox--danger & {
+      color: $color-red;
+    }
+
+    .is-checked.el-checkbox--success & {
+      color: $color-green;
+    }
+
+    .is-checked.el-checkbox--danger & {
+      color: $color-red;
+    }
+  }
+
+  &__inner {
+    .is-checked.el-checkbox--success & {
+      background-color: $color-green;
+      border-color: $color-green;
+    }
+
+    .is-checked.el-checkbox--danger & {
+      background-color: $color-red;
+      border-color: $color-red;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  & + & {
+    margin-left: 0;
+  }
+}
+
+.el-radio {
+  margin-right: rem(20);
+  margin-bottom: rem(8);
+
+  &__label {
+    font-size: $font-size-p;
+
+    .el-radio--success & {
+      color: $color-green;
+    }
+
+    .el-radio--danger & {
+      color: $color-red;
+    }
+
+    .is-checked.el-radio--success & {
+      color: $color-green;
+    }
+
+    .is-checked.el-radio--danger & {
+      color: $color-red;
+    }
+  }
+
+  &__inner {
+    .is-checked.el-radio--success & {
+      background-color: $color-green;
+      border-color: $color-green;
+    }
+
+    .is-checked.el-radio--danger & {
+      background-color: $color-red;
+      border-color: $color-red;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  & + & {
+    margin-left: 0;
+  }
+}
+
+.form {
+  &__btn {
+    display: flex;
+    margin: rem(20) auto;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    margin-bottom: rem(5);
+
+    i {
+      color: rgba($color: $color-theme, $alpha: 0.8);
+      margin-right: rem(10);
+    }
+  }
+
+  &__lead {
+    margin-bottom: rem(30);
+    text-align: center;
+  }
+
+  &__note {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: rem(15);
+    text-align: center;
+  }
+}

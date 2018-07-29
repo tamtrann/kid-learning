@@ -1,0 +1,11 @@
+// ------------------------------------------------------------------------------------------
+// This file contains all styles related to the modal's basic style of the site/application.
+// ------------------------------------------------------------------------------------------
+
+.uk-offcanvas-bar {
+  box-shadow: $box-shadow-normal;
+
+  @include media(">=sm") {
+    width: 300px;
+  }
+}

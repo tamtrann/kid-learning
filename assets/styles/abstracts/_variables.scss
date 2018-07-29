@@ -1,8 +1,8 @@
 //-----------------
 // # EMBEDDED FONTS
 //-----------------
-$font-primary: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-heading: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-primary: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-secondary: "Pathway Gothic One", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 //-----------------
 // @include-media
 //-----------------
@@ -18,20 +18,26 @@ $breakpoints: (
 //-----------------
 $color-white:      #fff;
 $color-black:      #212121;
-$color-gray:       #5a5a5a;
+$color-gray:       #525c65;
+$color-dark-gray:  #2e3d49;
 $color-light-gray: #ebebeb;
 $color-green:      #41b883;
+$color-red:        #f56c6c;
+$color-blue:       #4278dc;
+$color-dark-blue:  #1c262f;
+$color-brown:      #a9761b;
 //-----------------
 // #FONT SIZE
 //-----------------
-$font-size-h1:    calc(48px + (64 - 48) * (100vw - 375px) / (1800 - 375));
-$font-size-h2:    calc(28px + (42 - 28) * (100vw - 375px) / (1800 - 375));
-$font-size-h3:    calc(24px + (36 - 24) * (100vw - 375px) / (1800 - 375));
-$font-size-h4:    calc(20px + (30 - 20) * (100vw - 375px) / (1800 - 375));
-$font-size-h5:    calc(16px + (24 - 16) * (100vw - 375px) / (1800 - 375));
-$font-size-h6:    calc(12px + (20 - 12) * (100vw - 375px) / (1800 - 375));
-$font-size-p:     calc(12px + (16 - 12) * (100vw - 375px) / (1800 - 375));
-$font-size-sm:    calc(10px + (14 - 10) * (100vw - 375px) / (1800 - 375));
+$font-size-1:    calc(48px + (64 - 48) * (100vw - 375px) / (1600 - 375));
+$font-size-2:    calc(28px + (42 - 28) * (100vw - 375px) / (1600 - 375));
+$font-size-3:    calc(24px + (36 - 24) * (100vw - 375px) / (1600 - 375));
+$font-size-4:    calc(20px + (30 - 20) * (100vw - 375px) / (1600 - 375));
+$font-size-5:    calc(16px + (24 - 16) * (100vw - 375px) / (1600 - 375));
+$font-size-6:    calc(12px + (20 - 12) * (100vw - 375px) / (1600 - 375));
+$font-size-p:    calc(12px + (16 - 12) * (100vw - 375px) / (1600 - 375));
+$font-size-sm:   calc(10px + (14 - 10) * (100vw - 375px) / (1600 - 375));
+$font-size-base: 16px;
 //-----------------
 // #LETTER SPACING
 //-----------------
@@ -41,30 +47,26 @@ $letter-spacing-h3: 1px;
 $letter-spacing-h4: 1px;
 $letter-spacing-h5: 1px;
 $letter-spacing-h6: 1px;
-$letter-spacing-p:  1px;
+$letter-spacing-p:  0.5px;
 $letter-spacing-sm: 1px;
 //-----------------
 // #FONT WEIGHT
 //-----------------
 $font-weight-light:  300;
 $font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-semi:   600;
+$font-weight-semi:   500;
 $font-weight-bold:   700;
 $font-weight-heavy:  900;
 //-----------------
 // #BOX SHADOW
 //-----------------
-$box-shadow-light:  0  3px  6px rgba(0, 0, 0, 0.16),
-                    0  3px  6px rgba(0, 0, 0, 0.22);
-$box-shadow-normal: 0 14px 28px rgba(0, 0, 0, 0.25),
-                    0 10px 10px rgba(0, 0, 0, 0.22);
-$box-shadow-heavy:  0 19px 38px rgba(0, 0, 0, 0.32),
-                    0 15px 12px rgba(0, 0, 0, 0.22);
+$box-shadow-light:  0 2px 10px 0 rgba(0, 0, 0, 0.4);
+$box-shadow-normal: 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+$box-shadow-heavy:  0 10px 42px 0 rgba(0, 0, 0, 0.4);
 
-$color-text:    $color-black;
-$color-heading: $color-black;
-$color-theme:   $color-green;
+$color-theme:   $color-blue;
+$color-text:    $color-gray;
+$color-heading: $color-theme;
 $color-menu:    $color-white;
 $color-section: $color-white;
 $color-footer:  $color-white;

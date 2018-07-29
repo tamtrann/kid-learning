@@ -3,32 +3,168 @@
 // ------------------------------------------------------------------------------------------
 
 .btn {
-  border-radius: 4px;
-  display: inline-block;
-  padding: 10px 30px;
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 3rem;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: $box-shadow-normal;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.8px;
 
-  & + & {
-    margin-left: 1rem;
+  &:hover {
+    box-shadow: $box-shadow-light;
+    color: $color-white;
   }
 
-  &--green {
-    border-color: $color-green;
-    color: $color-gray;
+  &--default {
+    background-color: $color-theme;
+    border: solid 1px transparent;
+    color: $color-white;
 
     &:hover {
-      color: $color-white;
-      background-color: $color-green;
+      background-color: darken($color: $color-theme, $amount: 10%);
     }
   }
 
-  &--gray {
-    border-color: $color-gray;
-    color: $color-gray;
+  &--simple {
+    padding: 10px 0;
+  }
+
+  &--white {
+    color: $color-theme;
+    border: solid 1px $color-theme;
+    background-color: $color-white;
 
     &:hover {
-      color: $color-white;
-      background-color: $color-gray;
+      color: $color-theme;
+    }
+  }
+
+  &--brown {
+    color: $color-white;
+    border: solid 1px $color-brown;
+    background-color: $color-brown;
+  }
+
+  &--green {
+    color: $color-white;
+    border: solid 1px $color-green;
+    background-color: $color-green;
+  }
+
+  &--dark-gray {
+    color: $color-white;
+    border: solid 1px $color-dark-gray;
+    background-color: $color-dark-gray;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    border: solid 1px $color-white;
+    color: $color-white;
+  }
+
+  &--round {
+    border-radius: 1000px;
+  }
+
+  &--back {
+    color: $color-white;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &:focus {
+    // box-shadow: none;
+    outline: none;
+  }
+
+  & ~ .btn {
+    margin-left: 1rem;
+  }
+
+  i {
+    margin-right: rem(10);
+  }
+
+  &-wrapper {
+    display: flex;
+    margin-bottom: 3rem;
+    width: 100%;
+
+    .container--center & {
+      justify-content: center;
+    }
+
+    .container--right & {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.mouse {
+  position: relative;
+  display: block;
+  margin: 0 auto 14px;
+  width: rem(15);
+  height: rem(25);
+  border: 1px solid $color-white;
+  border-radius: 30px;
+
+  @include media(">=sm") {
+    width: rem(20);
+    height: rem(35);
+  }
+
+  &-container {
+    position: relative;
+    display: block;
+    z-index: 2;
+
+    @include media(">=sm") {
+      position: absolute;
+      left: 50%;
+      bottom: 3rem;
+      transform: translateX(-50%);
+
+      .hero--bottom & {
+        position: static;
+        transform: none;
+      }
+    }
+  }
+
+  &-text {
+    display: block;
+    color: $color-white;
+    text-align: center;
+  }
+
+  .scroll-down {
+    display: block;
+    margin: 15% auto auto;
+    width: 4px;
+    height: 8px;
+    border-radius: 50%;
+    background: $color-white;
+    animation: scroll-inner 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+  }
+}
+
+.el-button {
+  span {
+    @include flex-center;
+
+    color: $color-white;
+
+    i {
+      margin-left: 4px;
     }
   }
 }

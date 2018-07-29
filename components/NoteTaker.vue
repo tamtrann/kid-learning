@@ -1,19 +1,47 @@
 <template>
   <div class="notes">
-    <new-note></new-note>
-    <all-note :notes="notes"></all-note>
+    <h2 class="notes__heading">Ghi chú</h2>
+    <note-taker-new-note/>
+    <ul class="notes__list">
+      <li is="note-taker-note" v-for="note in notes" :key="note.id" :note="note"></li>
+      <span class="notes__remaining">{{ remaining }} ghi chú</span>
+    </ul>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+import NoteTakerNote from '~/components/NoteTakerNote'
+import NoteTakerNewNote from '~/components/NoteTakerNewNote'
+
+export default {
+  components: {
+    NoteTakerNote,
+    NoteTakerNewNote
+  },
+
+  computed: {
+    ...mapGetters({
+      notes: 'note/notes'
+    }),
+    remaining: function () {
+      return this.notes.length
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 .notes {
   @include block-center;
 
-  background: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-  margin: 130px 0 40px 0;
+  background: $color-white;
   max-width: 600px;
   position: relative;
+
+  &__heading {
+    color: #2e3d49;
+  }
 
   &__list {
     list-style: none;
@@ -26,67 +54,59 @@
   }
 
   &__remaining {
-    margin: 1rem 60px;
+    margin: 1rem 0;
   }
 
   input {
     border: none;
-    font-size: 24px;
     font-weight: $font-weight-light;
     padding-left: 0;
 
     @include placeholder {
-      color: #212121;
-      font-size: 24px;
-      font-style: italic;
+      // font-style: italic;
       font-weight: $font-weight-light;
+    }
+
+    &:focus {
+      box-shadow: none;
     }
   }
 }
 
 .note {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 60px;
+  margin-top: rem(10);
+  position: relative;
 
   &__remove {
+    background-color: transparent;
+    border: none;
+    color: $color-red;
     opacity: 0;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    padding: 0;
 
     .note:hover & {
-      opacity: 1;
+      opacity: 0.8;
     }
   }
+
   &__new {
     background: rgba(0, 0, 0, 0.003);
     border: none;
     box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
-    font-size: 24px;
     margin: 0;
-    padding: 16px 16px 16px 60px;
+    // padding: 16px 16px 16px 60px;
     position: relative;
     width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-}
-</style>
 
-<script>
-import { mapGetters } from "vuex";
-
-import AllNote from "~/components/note/AllNote";
-import NewNote from "~/components/note/NewNote";
-
-export default {
-  components: {
-    AllNote,
-    NewNote
-  },
-
-  computed: {
-    ...mapGetters({
-      notes: "note/notes"
-    })
+  input {
+    font-weight: $font-weight-bold;
+    padding-right: rem(30);
   }
 }
-</script>
+</style>

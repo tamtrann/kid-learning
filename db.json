@@ -1,29 +1,153 @@
 {
-  "results": [{
-      "category": "Geography",
+  "questions": {
+    "title": "Bài kiểm tra 15' bài 1 môn Lịch Sử lớp 7",
+    "time": 15,
+    "questions": [{
+      "category": "History",
+      "type": "single",
+      "question": "Vào cuối thế kỷ V, các quốc gia cổ đại phương Tây bị bộ tộc nào xâm chiếm?",
+      "answers": [{
+        "text": "Bộ tộc người Ăng - glô Xắc - xông",
+        "isCorrect": false
+      }, {
+        "text": "Bộ tộc người Giéc – man",
+        "isCorrect": true
+      }, {
+        "text": "Bộ tộc người Viking",
+        "isCorrect": false
+      }, {
+        "text": "Bộ tộc người Rô – ma",
+        "isCorrect": false
+      }]
+    }, {
+      "category": "History",
+      "type": "single",
+      "question": "Lãnh chúa phong kiến và nông nô được hình thành từ những tầng lớp nào của xã hội cổ đại?",
+      "answers": [{
+        "text": "Lãnh chúa hình thành từ nông dân. Nông nô hình thành từ quý tộc",
+        "isCorrect": false
+      }, {
+        "text": "Lãnh chúa hình thành từ chủ nô Rô - ma. Nông nô hình thành từ nông dân và nô lệ",
+        "isCorrect": false
+      }, {
+        "text": "Lãnh chúa hình thành từ tướng lĩnh quân sự và quý tộc. Nông nô hình thành từ nông dân và nô lệ",
+        "isCorrect": true
+      }, {
+        "text": "Lãnh chúa hình thành từ nông dân. Nông nô hình thành từ chủ nô Rô – ma",
+        "isCorrect": false
+      }]
+    }, {
+      "category": "History",
+      "type": "single",
+      "question": "Bức hình này mô tả gì?",
+      "image": "http://via.placeholder.com/350x150",
+      "answers": [{
+        "text": "Lãnh địa phong kiến",
+        "isCorrect": true
+      }, {
+        "text": "Nhà ở của nông nô",
+        "isCorrect": false
+      }, {
+        "text": "Lãnh chúa phong kiến",
+        "isCorrect": false
+      }, {
+        "text": "Nhà thờ",
+        "isCorrect": false
+      }]
+    }, {
+      "category": "History",
       "type": "multiple",
-      "question": "What is the capital of Jamaica?",
-      "answers": [
-        "San Juan",
-        "Port-au-Prince",
-        "Bridgetown",
-        "Kingston"
-      ],
-      "correct_answer": "Kingston",
-      "answer": ""
-    },
-    {
-      "category": "Entertainment: Books",
+      "question": "Cuộc sống của lãnh chúa trong lãnh địa như thế nào?",
+      "answers": [{
+        "text": "Các lãnh chúa phải lao động, tập cung, kiếm và cưỡi ngựa.",
+        "isCorrect": true
+      }, {
+        "text": "Các lãnh chúa không bao giờ phải lao động, chỉ tập cung, kiếm và cưỡi ngựa.",
+        "isCorrect": true
+      }, {
+        "text": "Các lãnh chúa thường tổ chức những buổi tiệc tùng, hội hè trong những lâu đài nguy nga.",
+        "isCorrect": true
+      }]
+    }, {
+      "category": "History",
+      "type": "single",
+      "question": "Bức tranh này mô tả gì?",
+      "image": "http://via.placeholder.com/350x150",
+      "answers": [{
+        "text": "Hội chợ",
+        "isCorrect": true
+      }, {
+        "text": "Lễ hội",
+        "isCorrect": false
+      }, {
+        "text": "Lãnh địa phong kiến",
+        "isCorrect": false
+      }, {
+        "text": "Nhà ở thời phong kiến",
+        "isCorrect": false
+      }]
+    }, {
+      "category": "History",
+      "type": "single",
+      "question": "Cư dân sống trong thành thị gồm những ai?",
+      "answers": [{
+        "text": "Lãnh chúa",
+        "isCorrect": false
+      }, {
+        "text": "Nông nô",
+        "isCorrect": false
+      }, {
+        "text": "Thợ thủ công và thương nhân",
+        "isCorrect": true
+      }, {
+        "text": "Chủ nô",
+        "isCorrect": false
+      }]
+    }, {
+      "category": "History",
       "type": "multiple",
-      "question": "Who wrote the children&#039;s story &quot;The Little Match Girl&quot;?",
-      "answers": [
-        "Charles Dickens",
-        "Lewis Carroll",
-        "Oscar Wilde",
-        "Hans Christian Andersen"
-      ],
-      "correct_answer": "Hans Christian Andersen",
-      "answer": ""
-    }
-  ]
+      "question": "Nguyên nhân nào dẫn đến sự ra đời của thành thị trung đại?",
+      "answers": [{
+        "text": "Do nơi đây tập trung nhiều thợ thủ công.",
+        "isCorrect": false
+      }, {
+        "text": "Do nhu cầu sản xuất nông nghiệp.",
+        "isCorrect": false
+      }, {
+        "text": "Do nơi đây tập trung nhiều lãnh chúa.",
+        "isCorrect": false
+      }, {
+        "text": "Do nhu cầu sản xuất và trao đổi, buôn bán.",
+        "isCorrect": true
+      }]
+    }, {
+      "category": "History",
+      "type": "multiple",
+      "question": "Nền kinh tế trong lãnh địa có đặc điểm gì?",
+      "answers": [{
+        "text": "Có sự trao đổi buôn bán tự do.",
+        "isCorrect": false
+      }, {
+        "text": "Nền kinh tế đóng kín, tự cung tự cấp.",
+        "isCorrect": true
+      }, {
+        "text": "Nền kinh tế chủ yếu là nông nghiệp.",
+        "isCorrect": true
+      }]
+    }, {
+      "category": "History",
+      "type": "multiple",
+      "question": "Nền kinh tế trong thành thị có đặc điểm gì?",
+      "answers": [{
+        "text": "Có sự trao đổi buôn bán tự do.",
+        "isCorrect": true
+      }, {
+        "text": "Nền kinh tế chủ yếu là nông nghiệp.",
+        "isCorrect": false
+      }, {
+        "text": "Nền kinh tế chủ yếu là thủ công nghiệp và thương nghiệp.",
+        "isCorrect": true
+      }]
+    }]
+  }
 }

@@ -3,14 +3,18 @@
   "abstracts/mixin",
   "abstracts/extensions";
 @import
+  "base/reset",
   "base/base",
+  "base/animations",
   "base/grid",
   "base/typography",
   "base/utilities";
 @import
-  "layout/header",
   "layout/hero",
   "layout/footer",
   "layout/section";
 @import
-  "components/button";
+  "components/button",
+  "components/form",
+  "components/modal",
+  "components/offcanvas";

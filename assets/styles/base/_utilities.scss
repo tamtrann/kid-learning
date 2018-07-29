@@ -2,15 +2,6 @@
 // This file contains all utilities of the site/application.
 // ----------------------------------------------------------
 
-.col {
-  &-center {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-}
-
 .p-r {
   position: relative;
 }

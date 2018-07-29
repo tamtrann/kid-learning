@@ -14,32 +14,32 @@ h6 {
 }
 
 h1 {
-  font-size: $font-size-h1;
+  font-size: $font-size-1;
   letter-spacing: $letter-spacing-h1;
 }
 
 h2 {
-  font-size: $font-size-h2;
+  font-size: $font-size-2;
   letter-spacing: $letter-spacing-h2;
 }
 
 h3 {
-  font-size: $font-size-h3;
+  font-size: $font-size-3;
   letter-spacing: $letter-spacing-h3;
 }
 
 h4 {
-  font-size: $font-size-h4;
+  font-size: $font-size-4;
   letter-spacing: $letter-spacing-h4;
 }
 
 h5 {
-  font-size: $font-size-h5;
+  font-size: $font-size-5;
   letter-spacing: $letter-spacing-h5;
 }
 
 h6 {
-  font-size: $font-size-h6;
+  font-size: $font-size-6;
   letter-spacing: $letter-spacing-h6;
 }
 
@@ -47,7 +47,7 @@ p {
   color: $color-text;
   font-family: $font-primary;
   font-size: $font-size-p;
-  font-weight: $font-weight-light;
+  font-weight: $font-weight-normal;
   letter-spacing: $letter-spacing-p;
 }
 
@@ -69,11 +69,12 @@ a {
 }
 
 span {
-  color: $color-text;
+  color: inherit;
   display: inline-block;
   font-family: $font-primary;
   font-size: $font-size-p;
-  font-weight: $font-weight-light;
+  font-weight: $font-weight-normal;
+  letter-spacing: $letter-spacing-p;
 }
 
 label,
@@ -82,6 +83,10 @@ li {
   font-family: $font-primary;
   font-size: $font-size-p;
   font-weight: $font-weight-normal;
+}
+
+textarea {
+  resize: none !important;
 }
 
 input,
@@ -118,5 +123,77 @@ button {
   &:focus {
     box-shadow: none;
     outline: none;
+  }
+}
+
+.text {
+  &-white {
+    color: $color-white !important;
+  }
+
+  &-black {
+    color: $color-black !important;
+  }
+
+  &-gray {
+    color: $color-gray !important;
+  }
+
+  &-theme {
+    color: $color-theme !important;
+  }
+
+  &-green {
+    color: $color-green !important;
+  }
+
+  &-neon {
+    &-blue {
+      color: #448aff !important;
+    }
+
+    &-green {
+      color: #00bfa5 !important;
+    }
+
+    &-red {
+      color: #d50000 !important;
+    }
+
+    &-orange {
+      color: #ff6d00 !important;
+    }
+
+    &-pink {
+      color: #ff4081 !important;
+    }
+
+    &-purple {
+      color: #a0f !important;
+    }
+
+    &-deep-purple {
+      color: #6200ea !important;
+    }
+
+    &-yellow {
+      color: #ffd600 !important;
+    }
+  }
+
+  &-brown {
+    color: $color-brown !important;
+  }
+
+  &-semi {
+    font-weight: $font-weight-semi !important;
+  }
+
+  &-bold {
+    font-weight: $font-weight-bold !important;
+  }
+
+  &-center {
+    text-align: center !important;
   }
 }
