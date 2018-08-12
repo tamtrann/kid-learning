@@ -5,7 +5,7 @@
         <el-row :gutter="20">
           <el-col :sm="10">
             <div class="hero__main">
-              <h1 class="hero__heading">Kid Learning</h1>
+              <h1 class="hero__heading">E-School</h1>
               <p class="hero__lead">Nulla aliquam volutpat nisi, et blandit est gravida non. In vel tempus mauris. In hendrerit, leo et molestie iaculis, turpis sem pharetra erat, a vestibulum nibh metus eu eros.</p>
               <div class="btn-wrapper">
                 <nuxt-link class="btn btn--white btn--round mb-4" to="/dashboard">BẮT ĐẦU</nuxt-link>

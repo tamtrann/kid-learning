@@ -280,6 +280,8 @@ $timeline-container-width: 100%;
       margin-bottom: rem(16);
       opacity: 0.5;
       padding: 0;
+      text-align: left;
+      width: 100%;
 
       &:hover {
         padding-left: rem(15);

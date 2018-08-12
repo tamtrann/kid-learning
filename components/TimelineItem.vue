@@ -5,8 +5,8 @@
         threshold: 0.5
       }">
       <div class="timeline__content">
-        <img v-if="timeline.image" class="timeline__img" :src="timeline.image"/>
-        <h2 class="timeline__content-title">{{ timeline.year }}</h2>
+        <img v-if="timeline.image" class="timeline__img" :src="timeline.image.url"/>
+        <h2 class="timeline__content-title">{{ timeline.year || '&nbsp;' }}</h2>
         <p class="timeline__content-desc" v-html="timeline.content"></p>
       </div>
     </div>

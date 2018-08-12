@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="container navbar-container">
       <span class="navbar-brand">
-        <nuxt-link to="/dashboard">Kid Learning</nuxt-link>
+        <nuxt-link to="/dashboard">E-School</nuxt-link>
       </span>
       <el-dropdown trigger="click" @click.native="showDropdown = !showDropdown" @visible-change="onDropdownChange($event)">
         <span class="el-dropdown-link">
