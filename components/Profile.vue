@@ -3,7 +3,7 @@
     <nuxt-link to="/dashboard" class="btn btn--back">
       <i class="fas fa-arrow-left"></i>
     </nuxt-link>
-    <div class="container">
+    <div class="container" v-if="user">
       <h1 class="profile__name">{{ user.name }}</h1>
       <h2 class="profile__heading">Thông tin cá nhân</h2>
       <el-row :gutter="20">
@@ -34,25 +34,25 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
-  data () {
-    return {
-      user: {
-        username: 'LyCao',
-        name: 'Cao Ý Ly',
-        email: 'test@123',
-        address: '',
-        type: 'student'
-      }
-    }
-  }
-  // computed: {
-  //   ...mapGetters({
-  //     user: 'user'
-  //   })
+  // data () {
+  //   return {
+  //     user: {
+  //       username: 'LyCao',
+  //       name: 'Cao Ý Ly',
+  //       email: 'test@123',
+  //       address: '',
+  //       type: 'student'
+  //     }
+  //   }
   // }
+  computed: {
+    ...mapGetters({
+      user: 'user'
+    })
+  }
 }
 </script>
 

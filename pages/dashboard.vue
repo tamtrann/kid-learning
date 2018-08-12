@@ -15,8 +15,7 @@ export default {
   layout: 'full',
   components: {
     Syllabus
-  },
-  middleware: ['auth']
+  }
 }
 </script>
 

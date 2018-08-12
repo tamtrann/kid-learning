@@ -73,7 +73,7 @@ module.exports = {
       secret: 'super-secret-key',
       resave: false,
       saveUninitialized: false,
-      cookie: { maxAge: 60000 }
+      cookie: { maxAge: 600000 }
     }),
     // Api middleware
     // We add /api/login & /api/logout routes
@@ -84,6 +84,9 @@ module.exports = {
   */
   loading: {
     color: '#3b8070'
+  },
+  router: {
+    middleware: ['auth']
   },
   /*
   ** Build configuration
