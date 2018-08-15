@@ -16,7 +16,7 @@
         </span>
         <el-dropdown-menu slot="dropdown">
           <!-- <el-dropdown-item @click.native="signIn">{{ user ? user.displayName : 'ĐĂNG KÍ' }}</el-dropdown-item> -->
-          <el-dropdown-item @click.native="goToProfile">Tam Tran</el-dropdown-item>
+          <el-dropdown-item @click.native="goToProfile">{{ user.name }}</el-dropdown-item>
           <!-- <el-dropdown-item divided v-if="user" @click.native="signOut">ĐĂNG XUẤT</el-dropdown-item> -->
           <el-dropdown-item divided @click.native="signOut">ĐĂNG XUẤT</el-dropdown-item>
         </el-dropdown-menu>
@@ -26,11 +26,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data () {
     return {
       showDropdown: false
     }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'user'
+    })
   },
   methods: {
     goToProfile () {

@@ -71,6 +71,9 @@ export default {
     NoteTaker,
     ThreadModal
   },
+  mounted () {
+    console.log(this.book)
+  },
   methods: {
     getExercise (exercise) {
       this.$store.commit('exercise/SET_QUESTIONS', exercise)
