@@ -8,6 +8,14 @@
       border-color: $color-red;
     }
 
+    .el-input--success & {
+      border-color: $color-green !important;
+    }
+
+    .el-input--danger & {
+      border-color: $color-red !important;
+    }
+
     &:focus {
       box-shadow: $box-shadow-normal;
     }

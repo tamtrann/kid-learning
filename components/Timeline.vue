@@ -39,8 +39,6 @@ export default {
   data () {
     return {
       showNav: false,
-      timelines: [],
-      milestones: [],
       activeMilestone: '',
       activeTimeline: ''
     }
@@ -49,10 +47,11 @@ export default {
     TimelineItem,
     NoteTaker
   },
+  props: [
+    'milestones'
+  ],
   mounted () {
-    axios.get(`https://thesiseducation.herokuapp.com/milestone`).then(res => {
-      this.milestones = res.data.slice()
-    })
+    this.showNav = true
   },
   methods: {
     goTo (id) {
@@ -141,13 +140,13 @@ $timeline-container-width: 100%;
 
   &-container {
     background-color: $color-dark-blue;
-    display: flex;
-    align-items: flex-start;
-    // width: $timeline-container-width;
-    min-height: 100vh;
-    position: relative;
     background-attachment: fixed;
     background-size: cover;
+    display: flex;
+    align-items: flex-start;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative; 
 
     // &::before {
     //   content: "";
@@ -269,7 +268,8 @@ $timeline-container-width: 100%;
   &-nav {
     padding-top: rem(15);
     position: relative;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     height: -webkit-fill-available;
 
     &__item {
@@ -297,12 +297,8 @@ $timeline-container-width: 100%;
   &-sidebar {
     background-color: $color-dark-gray;
     box-shadow: $box-shadow-light;
-    // height: 100vh;
     min-height: 400px;
     padding: 46px rem(25);
-    // position: sticky;
-    // top: 0;
-    // bottom: 0;
 
     &-offcanvas {
       .uk-offcanvas-bar {
@@ -312,8 +308,9 @@ $timeline-container-width: 100%;
     }
 
     .btn {
-      background-color: none;
+      background-color: transparent;
       border: none;
+      box-shadow: none;
       color: $color-white;
       font-weight: $font-weight-semi;
       opacity: 0.7;
@@ -322,56 +319,6 @@ $timeline-container-width: 100%;
       &:hover {
         opacity: 1;
       }
-    }
-  }
-}
-
-.el-collapse {
-  border: none;
-  list-style: none;
-  padding-left: 0;
-
-  &-item {
-    cursor: pointer;
-    padding: rem(15) 0;
-
-    &__arrow {
-      line-height: inherit;
-      margin-left: 4px;
-    }
-
-    &__content {
-      margin-top: rem(10);
-      padding-bottom: 0;
-    }
-
-    &__header {
-      @extend %default-transition-style;
-
-      background-color: transparent;
-      border-bottom: none;
-      color: $color-white;
-      font-family: $font-primary;
-      font-size: $font-size-p;
-      font-weight: $font-weight-bold;
-      height: auto;
-      line-height: 1.5;
-      opacity: 0.5;
-      text-transform: uppercase;
-
-      &:hover,
-      &.is-active {
-        opacity: 1;
-      }
-
-      &:focus {
-        color: $color-white;
-      }
-    }
-
-    &__wrap {
-      background-color: transparent;
-      border-bottom: none;
     }
   }
 }

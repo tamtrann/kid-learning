@@ -17,14 +17,12 @@
       <i class="fas fa-arrow-right"></i>
     </button>
     <div class="geomap">
-      <geo-chart width="800px" height="600px" :data="currentData" :label="currentLabel"></geo-chart>
+      <geo-chart width="800px" height="600px" :data="currentData" :label="currentLabel" :colors="colors"></geo-chart>
     </div>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
-import NoteTaker from '~/components/NoteTaker'
 
 export default {
   data () {
@@ -32,35 +30,33 @@ export default {
       showNav: false,
       currentLabel: '',
       currentData: [],
-      stats: [{
-        label: 'Diện tích',
-        data: [['United States', 44], ['Germany', 23], ['Brazil', 22]]
-      }, {
-        label: 'Dân số',
-        data: [['United States', 44], ['Germany', 23], ['Brazil', 22]]
-      }, {
-        label: 'Mật độ dân số',
-        data: [['United States', 44], ['Germany', 23], ['Brazil', 22]]
-      }, {
-        label: 'GDP',
-        data: [['United States', 40], ['Germany', 23], ['Brazil', 22]]
-      }, {
-        label: 'Lượng mưa',
-        data: [['United States', 40], ['Germany', 23], ['Brazil', 22]]
-      }, {
-        label: 'Nhiệt độ trung bình',
-        data: [['United States', 40], ['Germany', 23], ['Brazil', 22]]
-      }]
+      colors: [
+        '#3366CC',
+        '#DC3912',
+        '#FF9900',
+        '#109618',
+        '#990099',
+        '#3B3EAC',
+        '#0099C6',
+        '#DD4477',
+        '#66AA00',
+        '#B82E2E',
+        '#316395',
+        '#994499',
+        '#22AA99',
+        '#AAAA11',
+        '#6633CC',
+        '#E67300',
+        '#8B0707',
+        '#329262',
+        '#5574A6',
+        '#3B3EAC',
+      ]
     }
   },
-  components: {
-    NoteTaker
-  },
-  // mounted () {
-  //   axios.get(`https://api.myjson.com/bins/mnsrm`).then(res => {
-  //     this.stats = res.data.slice()
-  //   })
-  // },
+  props: [
+    'stats'
+  ],
   methods: {
     loadData (stat) {
       this.currentLabel = stat.label
@@ -124,7 +120,8 @@ export default {
   &-nav {
     padding-top: rem(15);
     position: relative;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     height: -webkit-fill-available;
 
     &__item {
@@ -167,6 +164,7 @@ export default {
     .btn {
       background-color: none;
       border: none;
+      box-shadow: none;
       color: $color-white;
       font-weight: $font-weight-semi;
       opacity: 0.7;
@@ -180,56 +178,6 @@ export default {
 
   rect {
     fill: $color-dark-blue !important;
-  }
-}
-
-.el-collapse {
-  border: none;
-  list-style: none;
-  padding-left: 0;
-
-  &-item {
-    cursor: pointer;
-    padding: rem(15) 0;
-
-    &__arrow {
-      line-height: inherit;
-      margin-left: 4px;
-    }
-
-    &__content {
-      margin-top: rem(10);
-      padding-bottom: 0;
-    }
-
-    &__header {
-      @extend %default-transition-style;
-
-      background-color: transparent;
-      border-bottom: none;
-      color: $color-white;
-      font-family: $font-primary;
-      font-size: $font-size-p;
-      font-weight: $font-weight-bold;
-      height: auto;
-      line-height: 1.5;
-      opacity: 0.5;
-      text-transform: uppercase;
-
-      &:hover,
-      &.is-active {
-        opacity: 1;
-      }
-
-      &:focus {
-        color: $color-white;
-      }
-    }
-
-    &__wrap {
-      background-color: transparent;
-      border-bottom: none;
-    }
   }
 }
 </style>

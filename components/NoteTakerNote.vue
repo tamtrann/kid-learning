@@ -20,8 +20,8 @@ export default {
   ],
   methods: {
     ...mapMutations({
-      edit: 'note/edit',
-      remove: 'note/remove'
+      edit: 'note/EDIT_NOTE',
+      remove: 'note/REMOVE_NOTE'
     }),
     deleteNote () {
       this.remove({ id: this.note.id })

@@ -1,42 +1,41 @@
 <template>
   <main>
-    <section class="course-main">
-      <div class="container-fluid">
-        <book-reader :book="book"/>
-        <exercise-modal/>
-        <mindmap-modal/>
-      </div>
-    </section>
-    <!-- <geo-chart
-      label="Population"
-      :data="[
-        ['Country', 'Population'],
-        ['France', 65700000]]"
-        ></geo-chart> -->
+    <div class="container-fluid">
+      <book-reader
+        :book="book"
+        @GetExercise="getExercise" @ShowNote="showNote"/>
+      <vk-offcanvas flipped overlay :show.sync="noteIsShow">
+        <note-taker/>
+      </vk-offcanvas>
+      <thread-modal :threads="threads"/>
+      <exercise-modal/>
+      <mindmap-modal/>
+    </div>
   </main>
 </template>
 
 <script>
 import axios from 'axios'
+import BookReader from '~/components/BookReader'
+import NoteTaker from '~/components/NoteTaker'
 import ExerciseModal from '~/components/ExerciseModal'
 import MindmapModal from '~/components/MindmapModal'
-import BookReader from '~/components/BookReader'
-import Timeline from '~/components/Timeline'
+import ThreadModal from '~/components/ThreadModal'
 
 export default {
   data () {
     return {
-      book: {}
+      book: {},
+      noteIsShow: false,
+      threads: []
     }
   },
   components: {
+    BookReader,
+    NoteTaker,
     ExerciseModal,
     MindmapModal,
-    BookReader,
-    Timeline
-  },
-  created () {
-    this.book = this.$route.params.book
+    ThreadModal
   },
   mounted () {
     let id = ''
@@ -70,42 +69,27 @@ export default {
         break
       }
     }
+
     axios.get(`https://thesiseducation.herokuapp.com/grade/${id}`).then(res => {
       this.book = JSON.parse(JSON.stringify(res.data))
-      console.log(res.data)
     })
+
+    axios.get(`https://thesiseducation.herokuapp.com/question`).then(res => {
+      this.threads = res.data.slice()
+    })
+
+    axios.get(`https://thesiseducation.herokuapp.com/note`).then(res => {
+      this.$store.commit('note/SET_NOTES', res.data)
+    })
+  },
+  methods: {
+    getExercise (exercise) {
+      this.$store.commit('exercise/SET_QUESTIONS', exercise)
+      this.$modal.show('exercise')
+    },
+    showNote () {
+      this.noteIsShow = true
+    }
   }
-  // middleware: ['exercise']
 }
 </script>
-
-<style lang="scss" scoped>
-.hero {
-  box-shadow: $box-shadow-light;
-  min-height: inherit;
-}
-
-.course {
-  &-header {
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-    padding: rem(20) 0;
-  }
-
-  &-main {
-    padding: 0;
-  }
-
-  &__class {
-    color: $color-text;
-    font-size: $font-size-4;
-    font-weight: $font-weight-light;
-    margin-bottom: 0;
-  }
-
-  &__name {
-    color: $color-green;
-    font-size: $font-size-2;
-    font-weight: $font-weight-light;
-  }
-}
-</style>

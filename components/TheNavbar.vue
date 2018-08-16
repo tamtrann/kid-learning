@@ -45,7 +45,7 @@ export default {
     },
     async signOut () {
       try {
-        await this.$store.dispatch('logout')
+        await this.$store.dispatch('LOGOUT')
       } catch (e) {
         this.error = e.message
       }
@@ -65,7 +65,8 @@ export default {
   right: 0;
   display: flex;
   align-items: center;
-  background-color: transparent;
+  // background-color: $color-white;
+  // box-shadow: $box-shadow-light;
   z-index: 10;
 
   &.hidden {
@@ -80,24 +81,37 @@ export default {
   &-brand {
     @include flex-center;
 
+    position: relative;
+
     a {
-      color: $color-theme;
-      font-family: $font-secondary;
+      color: $color-red;
       font-size: rem(40);
       font-weight: $font-weight-bold;
       letter-spacing: 3px;
 
       &:hover {
-        color: $color-theme;
+        color: $color-white;
       }
     }
+
+    // &::after {
+    //   content: "";
+    //   background-color: $color-theme;
+    //   box-shadow: $box-shadow-normal;
+    //   display: block;
+    //   position: absolute;
+    //   left: 0;
+    //   bottom: 0;
+    //   width: 100%;
+    //   height: 5px;
+    // }
   }
 }
 
 .toggler {
   svg {
-    height: 60px;
     cursor: pointer;
+    height: 60px;
     transform: translate3d(0, 0, 0);
   }
 
@@ -106,7 +120,7 @@ export default {
     transition: stroke-dashoffset 0.3s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.3s cubic-bezier(0.25, -0.25, 0.75, 1.25);
     stroke-width: 20px;
     stroke-linecap: round;
-    stroke: $color-theme;
+    stroke: $color-red;
     stroke-dashoffset: 0;
 
     &.top,

@@ -4,8 +4,9 @@
     <countdown :time="timeLimitation * 60 * 1000" @countdownend="submit">
       <p slot-scope="props" class="exercise__time">Thời gian còn lại：{{ props.minutes }} phút, {{ props.seconds }} giây.</p>
     </countdown>
-    <exercise-question v-for="(exerciseQuestion, index) in exerciseQuestions"
-                     :key="index" :question="exerciseQuestion" :index="index"></exercise-question>
+    <exercise-question
+      v-for="(exerciseQuestion, index) in exerciseQuestions"
+      :key="index" :question="exerciseQuestion" :index="index"></exercise-question>
     <el-button type="success" @click="submit">HOÀN TẤT</el-button>
   </div>
 </template>
@@ -31,12 +32,14 @@ export default {
       submit: 'exercise/SUBMIT'
     }),
     getScore () {
-      this.$alert('Your score:' + this.grade, 'Congratulations', {
-        confirmButtonText: 'OK',
+      this.$alert('Điểm đạt được: ' + this.grade + '/' + this.exerciseQuestions.length, 'KẾT QUẢ', {
+        showCancelButton: true,
+        confirmButtonText: 'Hoàn tất',
+        cancelButtonText: 'Làm lại',
         callback: action => {
           this.$message({
-            type: 'info',
-            message: `action: ${action}`
+            type: 'success',
+            message: `Cập nhật điểm thành công`
           })
         }
       })

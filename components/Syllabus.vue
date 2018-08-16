@@ -46,8 +46,12 @@
           <img src="~/assets/images/intro/geography-1.jpg" alt="Địa lí" class="syllabus__img">
         </div>
       </modal> -->
-      <modal :adaptive="true" width="80%" height="auto" :scrollable="true" :resizable="true" v-for="(item, index) in syllabus" :key="index" :name="item.grade">
-        <div class="syllabus__card" v-for="(book, index) in item.books" :key="index">
+      <modal
+        width="80%" height="auto"
+        :adaptive="true" :scrollable="true" :resizable="true"
+        v-for="(item, index) in syllabus" :key="index" :name="item.grade">
+        <div class="syllabus__card"
+          v-for="(book, index) in item.books" :key="index">
           <div class="syllabus__copy">
             <h2 class="syllabus__name" :class="['text-' + book.theme]">{{ book.title }}</h2>
             <p class="syllabus__description">{{ book.description }}</p>
@@ -185,14 +189,17 @@ export default {
   &__card {
     @include flex-center;
 
+    background-color: $color-dark-gray;
     border-radius: 8px;
     box-shadow: $box-shadow-heavy;
     cursor: pointer;
     height: 200px;
     margin-bottom: rem(20);
+    opacity: 0.8;
 
     &:hover {
       box-shadow: $box-shadow-normal;
+      opacity: 1;
     }
 
     &__name {
@@ -245,7 +252,6 @@ export default {
   &__card {
     // background-color: $color-white;
     // border-radius: 6px;
-    // box-shadow: $box-shadow-light;
     padding: 0 rem(30);
     position: relative;
 
@@ -286,7 +292,8 @@ export default {
     display: none;
 
     @include media(">=sm") {
-      border-radius: 4px;
+      border-radius: 4px;  
+      box-shadow: $box-shadow-normal;
       display: block;
       flex-grow: 1;
       max-width: 50%;

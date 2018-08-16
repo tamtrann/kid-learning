@@ -3,7 +3,10 @@ export const state = () => ({
 })
 
 export const mutations = {
-  add (state, payload) {
+  SET_NOTES(state, payload) {
+    state.notes = payload.notes.slice()
+  },
+  ADD_NOTE (state, payload) {
     state
       .notes
       .push({
@@ -12,7 +15,7 @@ export const mutations = {
         content: payload.note.content
       })
   },
-  remove (state, payload) {
+  REMOVE_NOTE (state, payload) {
     let noteIndex = state.notes.findIndex(function (note) {
       return note.id === payload.id
     })
@@ -20,7 +23,7 @@ export const mutations = {
       .notes
       .splice(noteIndex, 1)
   },
-  edit (state, payload) {
+  EDIT_NOTE (state, payload) {
     let noteIndex = state.notes.findIndex(note => (note.id === payload.id))
     state.notes[noteIndex].name = payload.note.name
     state.notes[noteIndex].content = payload.note.content
@@ -28,7 +31,7 @@ export const mutations = {
 }
 
 export const getters = {
-  notes (state) {
-    return state.notes
+  notes: state => {
+    return lesson => state.notes.filter(note => note.lesson.id === lesson)
   }
 }

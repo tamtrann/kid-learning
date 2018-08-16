@@ -5,7 +5,7 @@
         <nuxt-link to="/dashboard" class="btn">
           <i class="fas fa-arrow-left"></i>
         </nuxt-link>
-        <button class="btn" @click="showNote = true">
+        <button class="btn" @click="showNote">
           <i class="fas fa-sticky-note"></i>
         </button>
         <button class="btn" @click="$modal.show('mindmap')">
@@ -16,16 +16,16 @@
         </button>
       </div>
       <div class="book-lessons">
-        <!-- @change="toLesson()" -->
         <el-collapse v-model="activePart" accordion>
-          <el-collapse-item v-for="part in book.parts" :key="part.id" :title="part.name" :name="part.name">
+          <el-collapse-item v-for="part in book.parts" :key="part.id" :title="part.name" :name="part.name" class="el-collapse-part">
             <el-collapse v-model="activeChapter" accordion>
-              <el-collapse-item v-for="chapter in part.chapters" :key="chapter.id" :title="chapter.name" :name="chapter.name">
-                <el-collapse v-model="page" accordion>
-                  <el-collapse-item v-for="lesson in chapter.lessons" :key="lesson.id" :title="lesson.name" :name="lesson.page">
+              <el-collapse-item v-for="chapter in part.chapters" :key="chapter.id" :title="chapter.name" :name="chapter.name" class="el-collapse-chapter">
+                <el-collapse v-model="page" accordion @change="getLesson">
+                  <el-collapse-item v-for="lesson in chapter.lessons" :key="lesson.id" :title="lesson.name" :name="lesson.page" class="el-collapse-lesson">
                     <p class="book-intro">{{ lesson.introduction }}</p>
-                    <button v-if="lesson.exercises" v-for="(exercise, index) in lesson.exercises" :key="index"
-                            class="btn btn--simple text-white" @click="getExercise(exercise)"><i class="far fa-file-alt"></i>
+                    <button
+                      v-if="lesson.exercises" v-for="(exercise, index) in lesson.exercises" :key="index"
+                      class="btn btn--simple" @click="getExercise(exercise)"><i class="far fa-file-alt"></i>
                       {{ exercise.title }}
                     </button>
                     <!-- <thread-modal v-if="lesson.questions" :threads="lesson.questions"/> -->
@@ -45,39 +45,29 @@
         ref="book"
       ></iframe>
     </div>
-    <vk-offcanvas flipped overlay :show.sync="showNote">
-      <note-taker/>
-    </vk-offcanvas>
-    <thread-modal/>
   </div>
 </template>
 
 <script>
-import NoteTaker from '~/components/NoteTaker'
-import ThreadModal from '~/components/ThreadModal'
-
 export default {
   data () {
     return {
       activePart: '',
       activeChapter: '',
       activeLesson: '',
-      page: 0,
-      showNote: false
+      page: 0
     }
   },
   props: ['book'],
-  components: {
-    NoteTaker,
-    ThreadModal
-  },
-  mounted () {
-    console.log(this.book)
-  },
   methods: {
     getExercise (exercise) {
-      this.$store.commit('exercise/SET_QUESTIONS', exercise)
-      this.$modal.show('exercise')
+      this.$emit('GetExercise', exercise)
+    },
+    getLesson (lesson) {
+      console.log(lesson)
+    },
+    showNote () {
+      this.$emit('ShowNote')
     }
   },
   watch: {
@@ -94,6 +84,8 @@ export default {
 .book {
   display: flex;
   align-items: flex-start;
+  width: 100%;
+  height: 100vh;
 
   &-reader {
     box-shadow: $box-shadow-normal;
@@ -116,8 +108,8 @@ export default {
     background-color: #2e3d49;
     box-shadow: $box-shadow-light;
     width: 300px;
-    height: 100vh;
-    min-height: 400px;
+    height: 100%;
+    overflow: hidden;
     padding: 46px rem(25);
     position: relative;
 
@@ -125,7 +117,9 @@ export default {
       background-color: none;
       border: none;
       color: $color-white;
+      font-size: $font-size-sm;
       font-weight: $font-weight-semi;
+      margin-left: 0;
       opacity: 0.7;
       padding: 0;
 
@@ -144,12 +138,15 @@ export default {
 
   &-intro {
     color: rgba($color: $color-white, $alpha: 0.6);
+    font-size: $font-size-sm;
     margin-bottom: rem(15);
+    text-align: justify;
   }
 
   &-lessons {
     height: -webkit-fill-available;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     z-index: 1;
   }
 
@@ -184,8 +181,6 @@ export default {
       border-bottom: none;
       color: $color-white;
       font-family: $font-primary;
-      font-size: $font-size-p;
-      font-weight: $font-weight-bold;
       height: auto;
       line-height: 1.5;
       opacity: 0.5;
@@ -197,6 +192,22 @@ export default {
 
       &:focus {
         color: $color-white;
+      }
+
+      .el-collapse-part & {
+        font-size: $font-size-p;
+        font-weight: $font-weight-bold;
+      }
+
+      .el-collapse-chapter & {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-normal;
+        text-transform: uppercase;
+      }
+
+      .el-collapse-lesson & {
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
       }
     }
 

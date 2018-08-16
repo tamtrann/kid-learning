@@ -5,6 +5,7 @@
     </nuxt-link>
     <div class="container" v-if="user">
       <h1 class="profile__name">{{ user.name }}</h1>
+      <img :src="user.avatar.url" :alt="user-name" class="profile__avatar">
       <h2 class="profile__heading">Thông tin cá nhân</h2>
       <el-row :gutter="20">
         <el-col :sm="12">
@@ -37,17 +38,6 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  // data () {
-  //   return {
-  //     user: {
-  //       username: 'LyCao',
-  //       name: 'Cao Ý Ly',
-  //       email: 'test@123',
-  //       address: '',
-  //       type: 'student'
-  //     }
-  //   }
-  // }
   computed: {
     ...mapGetters({
       user: 'user'
@@ -63,6 +53,15 @@ export default {
   background-color: $color-dark-blue;
   min-height: 100vh;
   position: relative;
+
+  &__avatar {
+    border: 4px solid $color-white;
+    border-radius: 100%;
+    display: block;
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+  }
 
   &__name {
     color: lighten($color: $color-gray, $amount: 40%);

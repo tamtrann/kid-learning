@@ -1,28 +1,25 @@
 <template>
   <div class="thread">
     <div class="thread__topic">
-      <img :src="thread.topic.avatar" :alt="thread.topic.name" class="thread__avatar">
-        <div class="thread__responses__item__body">
-        <span class="thread__user">{{ thread.topic.name }}</span>
-        <p class="thread__content">{{ thread.topic.content }}</p>
-        <span>{{ thread.topic.timestamp | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}</span>
+      <img :src="thread.user.avatar.url" :alt="thread.user.name" class="thread__avatar">
+      <div class="thread__responses__item__body">
+        <span class="thread__user">{{ thread.user.name }}</span>
+        <p class="thread__content">{{ thread.content }}</p>
+        <span class="thread__time">{{ thread.createdAt | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}</span>
       </div>
     </div>
     <ul class="thread__responses">
-      <li v-for="(item, index) in thread.responses" :key="index" class="thread__responses__item">
-        <img :src="item.avatar" :alt="item.name" class="thread__avatar">
+      <li v-for="item in thread.answers" :key="item.id" class="thread__responses__item">
+        <img :src="item.user.avatar.url" :alt="item.user.name" class="thread__avatar">
         <div class="thread__responses__item__body">
-          <span class="thread__user">{{ item.name }}</span>
+          <span class="thread__user">{{ item.user.name }}</span>
           <p class="thread__content">{{ item.content }}</p>
-          <span class="thread__time">{{ item.timestamp | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}</span>
+          <span class="thread__time">{{ item.createdAt | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}</span>
         </div>
       </li>
       <li class="thread__responses__item thread__responses__item--new">
-        <img :src="user.avatar" :alt="user.name" class="thread__avatar">
-        <!-- <span class="thread__user">{{ user.name }}</span> -->
+        <img :src="user.avatar.url" :alt="user.name" class="thread__avatar">
         <el-input v-model="newContent" id="newContent" type="text" @keyup.enter.native="submitResponse"></el-input>
-        <!-- <p class="thread__content">{{ item.content }}</p>
-        <span>{{ item.timestamp }}</span> -->
       </li>
     </ul>
   </div>
@@ -37,9 +34,9 @@ export default {
       newContent: ''
     }
   },
-  props: [
-    'thread'
-  ],
+  props: {
+    thread: Object
+  },
   computed: {
     ...mapGetters({
       user: 'user'
@@ -49,14 +46,12 @@ export default {
     submitResponse () {
       let newResponse = {
         name: this.user.name,
-        avatar: this.user.avatar,
+        avatar: this.user.avatar.url,
         content: this.newContent,
         timestamp: Date.now()
       }
 
       this.$emit('addResponse', newResponse)
-
-      // this.responses.push(newResponse)
       this.newContent = ''
     }
   }
@@ -71,6 +66,8 @@ export default {
     border: 2px solid $color-white;
     border-radius: 100%;
     margin-right: rem(20);
+    width: rem(54);
+    height: rem(54);
   }
 
   &__btn {

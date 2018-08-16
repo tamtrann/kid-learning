@@ -20,6 +20,22 @@
                               'disabled': submitted }">{{ item.content }}</el-checkbox>
       </el-checkbox-group>
     </template>
+    <template v-if="question.type === 'fillInTheBlank'">
+      <el-input
+        v-for="(item, index) in question.answers" :key="index"
+        :placeholder="index + 1" v-model="blank[index]"
+        @change="checkBlank"
+        :class="{ 'el-input--success': submitted && item.isCorrect,
+                  'el-input--danger': submitted && !item.isCorrect,
+                  'disabled': submitted }"></el-input>
+      <!-- <el-radio-group v-model="single" @change="checkSingle">
+        <el-radio v-for="(item, index) in question.answers"
+                  :key="index" :label="item"
+                  :class="{ 'el-radio--success': submitted && item.isCorrect,
+                            'el-radio--danger': submitted && !item.isCorrect,
+                            'disabled': submitted }">{{ item.content }}</el-radio>
+      </el-radio-group> -->
+    </template>
   </div>
 </template>
 
@@ -31,6 +47,7 @@ export default {
     return {
       single: null,
       multiple: [],
+      blank: [],
       isCorrect: false
     }
   },
@@ -61,6 +78,9 @@ export default {
       let totalAnswersCount = this.multiple.length
       let correctAnswersCount = this.multiple.filter(answer => answer.isCorrect === true).length
       totalCorrectAnswersCount === totalAnswersCount && totalCorrectAnswersCount === correctAnswersCount ? this.isCorrect = true : this.isCorrect = false
+    },
+    checkBlank () {
+      JSON.stringify(this.question.answers) === JSON.stringify(this.blank) ? this.isCorrect = true : this.isCorrect = false
     }
   },
   watch: {
@@ -99,6 +119,17 @@ export default {
 
   .el-radio {
     color: rgba($color: $color-white, $alpha: 0.8);
+  }
+
+  .el-input {
+    margin-right: rem(10);
+    width: auto;
+  }
+
+  .el-input__inner {
+    background-color: rgba($color: $color-dark-gray, $alpha: 0.8);
+    border: 1px solid rgba($color: $color-white, $alpha: 0.2);
+    color: $color-white;
   }
 }
 </style>

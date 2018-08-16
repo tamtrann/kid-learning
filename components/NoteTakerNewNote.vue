@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     ...mapMutations({
-      add: 'note/add'
+      add: 'note/ADD_NOTE'
     }),
     addNote () {
       if (this.newNote.name.trim() && this.newNote.content.trim()) {

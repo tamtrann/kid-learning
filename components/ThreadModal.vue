@@ -7,50 +7,27 @@
         </svg>
       </button>
     </div>
-    <thread-new-thread/>
-    <thread v-for="(item, index) in threads" :key="index" :thread="item" @addResponse="onAddResponse($event, index)"/>
+    <thread-new/>
+    <thread v-for="item in threads" :key="item.id" :thread="item" @addResponse="onAddResponse($event, index)"/>
   </modal>
 </template>
 
 <script>
 import Thread from '~/components/Thread'
-import ThreadNewThread from '~/components/ThreadNewThread'
+import ThreadNew from '~/components/ThreadNew'
 
 export default {
-  data () {
-    return {
-      threads: [{
-        topic: {
-          name: 'Cao Ý Ly',
-          avatar: 'http://via.placeholder.com/50x50',
-          content: 'Bầy người nguyên thủy sống như thế nào?',
-          timestamp: ''
-        },
-        responses: [{
-          name: 'Tâm Trần',
-          avatar: 'http://via.placeholder.com/50x50',
-          content: 'Người tối cổ: cuộc sống "ăn hang, ở lỗ" rất bấp bênh, sống theo bầy đàn, dựa vào săn bắt, hái lượm, biết dùng lửa, ghè đẽo đá làm công cụ',
-          timestamp: ''
-        }, {
-          name: 'Tâm Trần',
-          avatar: 'http://via.placeholder.com/50x50',
-          content: 'Người tinh khôn: sống theo từng thị tộc, làm chung, ăn chung, biết trồng trọt, chăn nuôi, làm đồ gốm và đồ trang sức',
-          timestamp: ''
-        }]
-      }]
-    }
-  },
   components: {
     Thread,
-    ThreadNewThread
+    ThreadNew
+  },
+  props: {
+    threads: Array
   },
   methods: {
     onAddResponse (response, index) {
       this.threads[index].responses.push(response)
     }
   }
-  // props: [
-  //   'threads'
-  // ]
 }
 </script>
