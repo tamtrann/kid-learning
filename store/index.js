@@ -25,6 +25,7 @@ export const actions = {
     try {
       const { data } = await axios.post('/api/login', { identifier, password })
       commit('SET_USER', data.user)
+      commit('note/SET_NOTES', data.user.notes)
       this.app.router.push('/dashboard')
     } catch (error) {
       if (error.response && error.response.status === 401) {

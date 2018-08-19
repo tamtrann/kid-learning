@@ -8,7 +8,9 @@
       </button>
     </div>
     <thread-new/>
-    <thread v-for="item in threads" :key="item.id" :thread="item" @addResponse="onAddResponse($event, index)"/>
+    <thread
+      v-for="item in threads" :key="item.id" :thread="item"
+      @addResponse="onAddResponse($event, item.id)"/>
   </modal>
 </template>
 
@@ -22,11 +24,13 @@ export default {
     ThreadNew
   },
   props: {
-    threads: Array
+    threads: Array,
+    lessonId: String
   },
   methods: {
-    onAddResponse (response, index) {
-      this.threads[index].responses.push(response)
+    onAddResponse (response, id) {
+      this.$emit('AddResponse', response, id)
+      // this.threads[index].responses.push(response)
     }
   }
 }

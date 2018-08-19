@@ -21,17 +21,11 @@ router.post('/login', (req, res) => {
     identifier: req.body.identifier,
     password: req.body.password
   }).then(function (response) {
-    req.session.user = response.data
+    req.session.user = response.data.user
     return res.json(JSON.parse(JSON.stringify(response.data)))
-    // return JSON.parse(JSON.stringify(res.data))
   }).catch(function (error) {
     console.log(error)
   })
-  // if (req.body.username === 'demo' && req.body.password === 'demo') {
-  //   req.session.user = { username: 'demo' }
-  //   return res.json({ username: 'demo' })
-  // }
-  // res.status(401).json({ message: 'Bad credentials' })
 })
 
 // Add POST - /api/logout

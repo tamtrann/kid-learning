@@ -189,16 +189,16 @@ export default {
   &__card {
     @include flex-center;
 
-    background-color: $color-dark-gray;
+    background-color: $color-white;
     border-radius: 8px;
-    box-shadow: $box-shadow-heavy;
+    box-shadow: $box-shadow-normal;
     cursor: pointer;
     height: 200px;
     margin-bottom: rem(20);
     opacity: 0.8;
 
     &:hover {
-      box-shadow: $box-shadow-normal;
+      box-shadow: $box-shadow-light;
       opacity: 1;
     }
 
@@ -292,7 +292,7 @@ export default {
     display: none;
 
     @include media(">=sm") {
-      border-radius: 4px;  
+      border-radius: 4px;
       box-shadow: $box-shadow-normal;
       display: block;
       flex-grow: 1;

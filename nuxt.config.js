@@ -73,10 +73,11 @@ module.exports = {
       secret: 'super-secret-key',
       resave: false,
       saveUninitialized: false,
-      cookie: { maxAge: 600000 }
+      cookie: {
+        maxAge: 600000
+      }
     }),
-    // Api middleware
-    // We add /api/login & /api/logout routes
+    // Api middleware We add /api/login & /api/logout routes
     '~/api'
   ],
   /*
@@ -107,14 +108,12 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev }) {
+    extend(config, {isDev}) {
       if (isDev && process.client) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+        config
+          .module
+          .rules
+          .push({enforce: 'pre', test: /\.(js|vue)$/, loader: 'eslint-loader', exclude: /(node_modules)/})
       }
     }
   },

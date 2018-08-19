@@ -17,11 +17,20 @@
       </div>
       <div class="book-lessons">
         <el-collapse v-model="activePart" accordion>
-          <el-collapse-item v-for="part in book.parts" :key="part.id" :title="part.name" :name="part.name" class="el-collapse-part">
+          <el-collapse-item
+            v-for="part in book.parts"
+            :key="part.id" :title="part.name" :name="part.name"
+            class="el-collapse-part">
             <el-collapse v-model="activeChapter" accordion>
-              <el-collapse-item v-for="chapter in part.chapters" :key="chapter.id" :title="chapter.name" :name="chapter.name" class="el-collapse-chapter">
-                <el-collapse v-model="page" accordion @change="getLesson">
-                  <el-collapse-item v-for="lesson in chapter.lessons" :key="lesson.id" :title="lesson.name" :name="lesson.page" class="el-collapse-lesson">
+              <el-collapse-item
+                v-for="chapter in part.chapters"
+                :key="chapter.id" :title="chapter.name" :name="chapter.name"
+                class="el-collapse-chapter">
+                <el-collapse v-model="page" accordion @change="getNotes">
+                  <el-collapse-item
+                    v-for="lesson in chapter.lessons"
+                    :key="lesson.id" :title="lesson.name" :name="lesson.page" :id="lesson.id"
+                    class="el-collapse-lesson" ref="lesson">
                     <p class="book-intro">{{ lesson.introduction }}</p>
                     <button
                       v-if="lesson.exercises" v-for="(exercise, index) in lesson.exercises" :key="index"
@@ -63,8 +72,10 @@ export default {
     getExercise (exercise) {
       this.$emit('GetExercise', exercise)
     },
-    getLesson (lesson) {
-      console.log(lesson)
+    getNotes () {
+      let selectedLesson = this.$refs.lesson.find(el => el.isActive)
+      let selectedId = selectedLesson.$el.id
+      this.$emit('GetNotes', selectedId)
     },
     showNote () {
       this.$emit('ShowNote')

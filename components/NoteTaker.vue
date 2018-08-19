@@ -2,8 +2,9 @@
   <div class="notes">
     <h2 class="notes__heading">Ghi chú</h2>
     <note-taker-new-note/>
+    <!-- {{ lessonId }} -->
     <ul class="notes__list">
-      <li is="note-taker-note" v-for="note in notes" :key="note.id" :note="note"></li>
+      <li is="note-taker-note" v-for="note in notes(lessonId)" :key="note.id" :note="note"></li>
       <span class="notes__remaining">{{ remaining }} ghi chú</span>
     </ul>
   </div>
@@ -19,13 +20,15 @@ export default {
     NoteTakerNote,
     NoteTakerNewNote
   },
-
+  props: [
+    'lessonId'
+  ],
   computed: {
     ...mapGetters({
       notes: 'note/notes'
     }),
     remaining: function () {
-      return this.notes.length
+      return this.notes(this.lessonId).length
     }
   }
 }

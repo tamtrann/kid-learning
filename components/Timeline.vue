@@ -82,7 +82,7 @@ $timeline-container-width: 100%;
 
   &__content {
     &-title {
-      color: $color-white;
+      color: $color-dark-blue;
       font-family: $font-secondary;
       font-size: 66px;
       margin: -10px 0 0 0;
@@ -94,7 +94,7 @@ $timeline-container-width: 100%;
       margin: 0;
       font-size: 15px;
       box-sizing: border-box;
-      color: rgba($color-white, 0.7);
+      // color: rgba($color-white, 0.7);
       font-family: $font-primary;
       font-weight: normal;
       line-height: 25px;
@@ -108,11 +108,12 @@ $timeline-container-width: 100%;
 
   &::before {
     content: "";
-    background: rgba(255, 255, 255, 0.07);
+    // background: rgba(255, 255, 255, 0.07);
+    background-color: rgba($color: $color-dark-gray, $alpha: 0.2);
     margin-left: -1px;
     position: absolute;
     left: 40px;
-    width: 2px;
+    width: 1px;
     height: 100%;
 
     @include media(">=sm") {
@@ -139,14 +140,14 @@ $timeline-container-width: 100%;
   }
 
   &-container {
-    background-color: $color-dark-blue;
+    background-color: $color-white;
     background-attachment: fixed;
     background-size: cover;
     display: flex;
     align-items: flex-start;
     min-height: 100vh;
     overflow: hidden;
-    position: relative; 
+    position: relative;
 
     // &::before {
     //   content: "";
@@ -219,14 +220,15 @@ $timeline-container-width: 100%;
 
       &::before {
         content: attr(data-text);
-        border-left: 2px solid rgba($color-white, 0.5);
-        color: rgba($color-white, 0.5);
+        border-left: 3px solid rgba($color-dark-gray, 0.8);
+        // color: rgba($color-white, 0.5);
         font-size: $font-size-p;
         font-family: $font-primary;
+        font-weight: $font-weight-bold;
         letter-spacing: 3px;
         position: absolute;
         top: 70%;
-        right: calc(-100% - 39px);
+        right: calc(-100% - 38px);
         left: inherit;
         margin-top: -5px;
         padding-left: 15px;
@@ -239,7 +241,7 @@ $timeline-container-width: 100%;
 
         &::before {
           border-left: none;
-          border-right: 2px solid rgba($color-white, 0.5);
+          border-right: 3px solid rgba($color-dark-gray, 0.8);
           right: auto;
           left: calc(-100% - 39px);
           padding-left: 0;

@@ -3,11 +3,11 @@
     <div class="container-fluid">
       <book-reader
         :book="book"
-        @GetExercise="getExercise" @ShowNote="showNote"/>
+        @GetExercise="getExercise" @GetNotes="getNotes" @ShowNote="showNote"/>
       <vk-offcanvas flipped overlay :show.sync="noteIsShow">
-        <note-taker/>
+        <note-taker :lessonId="notesId"/>
       </vk-offcanvas>
-      <thread-modal :threads="threads"/>
+      <thread-modal :threads="threads" @AddResponse="addResponse"/>
       <exercise-modal/>
       <mindmap-modal/>
     </div>
@@ -27,7 +27,8 @@ export default {
     return {
       book: {},
       noteIsShow: false,
-      threads: []
+      threads: [],
+      notesId: ''
     }
   },
   components: {
@@ -78,14 +79,20 @@ export default {
       this.threads = res.data.slice()
     })
 
-    axios.get(`https://thesiseducation.herokuapp.com/note`).then(res => {
-      this.$store.commit('note/SET_NOTES', res.data)
-    })
+    // this.$store.commit('note/SET_NOTES')
   },
   methods: {
+    addResponse (response, id) {
+      // console.log(response, id)
+      let index = this.threads.findIndex(thread => thread.id === id)
+
+    },
     getExercise (exercise) {
       this.$store.commit('exercise/SET_QUESTIONS', exercise)
       this.$modal.show('exercise')
+    },
+    getNotes (lessonId) {
+      this.notesId = lessonId
     },
     showNote () {
       this.noteIsShow = true

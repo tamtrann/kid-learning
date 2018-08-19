@@ -3,8 +3,8 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_NOTES(state, payload) {
-    state.notes = payload.notes.slice()
+  SET_NOTES (state, payload) {
+    state.notes = payload.slice()
   },
   ADD_NOTE (state, payload) {
     state
@@ -32,6 +32,7 @@ export const mutations = {
 
 export const getters = {
   notes: state => {
-    return lesson => state.notes.filter(note => note.lesson.id === lesson)
+    return lessonId => state.notes.filter(note => note.lesson === lessonId)
+    // return state.notes
   }
 }

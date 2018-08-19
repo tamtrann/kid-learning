@@ -24,8 +24,8 @@ export default {
 .dashboard {
   @include flex-center;
 
-  background-color: $color-dark-blue;
-  // background-image: url("~/assets/images/background/le-hong-phong-high-school.jpg");
+  // background-color: $color-white;
+  background-image: url("~/assets/images/background/le-hong-phong-high-school.jpg");
   background-size: cover;
   height: 100vh;
   min-height: 600px;
