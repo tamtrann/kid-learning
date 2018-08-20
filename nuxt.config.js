@@ -1,5 +1,7 @@
 import bodyParser from 'body-parser'
 import session from 'express-session'
+import sessionstore from 'sessionstore'
+// var MongoStore = require('connect-mongo')(session)
 
 module.exports = {
   /*
@@ -66,10 +68,9 @@ module.exports = {
     }
   ],
   serverMiddleware: [
-    // body-parser middleware
     bodyParser.json(),
-    // session middleware
     session({
+      store: sessionstore.createSessionStore(),
       secret: 'super-secret-key',
       resave: false,
       saveUninitialized: false,
@@ -77,7 +78,6 @@ module.exports = {
         maxAge: 600000
       }
     }),
-    // Api middleware We add /api/login & /api/logout routes
     '~/api'
   ],
   /*
