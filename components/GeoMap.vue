@@ -57,6 +57,9 @@ export default {
   props: [
     'stats'
   ],
+  mounted () {
+    this.showNav = true
+  },
   methods: {
     loadData (stat) {
       this.currentLabel = stat.label

@@ -8,7 +8,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'vue-stater',
+    title: 'E-School',
     meta: [
       {
         charset: 'utf-8'

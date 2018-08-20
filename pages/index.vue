@@ -90,7 +90,8 @@ import RegisterForm from '~/components/RegisterForm'
 export default {
   components: {
     RegisterForm
-  }
+  },
+  middleware: ['auth-home']
 }
 </script>
 

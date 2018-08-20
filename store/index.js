@@ -38,6 +38,19 @@ export const actions = {
   async LOGOUT ({ commit }) {
     await axios.post('/api/logout')
     commit('SET_USER', null)
+    this.app.router.push('/')
+  },
+
+  async ADD_ANSWER ({ commit }, { answer, id }) {
+    try {
+      const { data } = await axios.post('/api/answer', { answer, id })
+      console.log(data)
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        throw new Error('Bad credentials')
+      }
+      throw error
+    }
   }
 }
 

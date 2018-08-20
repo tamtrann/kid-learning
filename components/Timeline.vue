@@ -82,7 +82,7 @@ $timeline-container-width: 100%;
 
   &__content {
     &-title {
-      color: $color-dark-blue;
+      color: $color-white;
       font-family: $font-secondary;
       font-size: 66px;
       margin: -10px 0 0 0;
@@ -94,7 +94,7 @@ $timeline-container-width: 100%;
       margin: 0;
       font-size: 15px;
       box-sizing: border-box;
-      // color: rgba($color-white, 0.7);
+      color: rgba($color-white, 0.7);
       font-family: $font-primary;
       font-weight: normal;
       line-height: 25px;
@@ -108,8 +108,8 @@ $timeline-container-width: 100%;
 
   &::before {
     content: "";
-    // background: rgba(255, 255, 255, 0.07);
-    background-color: rgba($color: $color-dark-gray, $alpha: 0.2);
+    background: rgba(255, 255, 255, 0.07);
+    // background-color: rgba($color: $color-dark-gray, $alpha: 0.2);
     margin-left: -1px;
     position: absolute;
     left: 40px;
@@ -140,7 +140,7 @@ $timeline-container-width: 100%;
   }
 
   &-container {
-    background-color: $color-white;
+    background-color: $color-dark-blue;
     background-attachment: fixed;
     background-size: cover;
     display: flex;
@@ -220,8 +220,8 @@ $timeline-container-width: 100%;
 
       &::before {
         content: attr(data-text);
-        border-left: 3px solid rgba($color-dark-gray, 0.8);
-        // color: rgba($color-white, 0.5);
+        border-left: 3px solid rgba($color-white, 0.8);
+        color: rgba($color-white, 0.5);
         font-size: $font-size-p;
         font-family: $font-primary;
         font-weight: $font-weight-bold;

@@ -10,7 +10,7 @@
     <thread-new/>
     <thread
       v-for="item in threads" :key="item.id" :thread="item"
-      @addResponse="onAddResponse($event, item.id)"/>
+      @addAnswer="onAddAnswer($event, item.id)"/>
   </modal>
 </template>
 
@@ -28,9 +28,8 @@ export default {
     lessonId: String
   },
   methods: {
-    onAddResponse (response, id) {
-      this.$emit('AddResponse', response, id)
-      // this.threads[index].responses.push(response)
+    onAddAnswer (answer, id) {
+      this.$emit('AddAnswer', answer, id)
     }
   }
 }

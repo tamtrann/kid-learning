@@ -4,7 +4,7 @@
       <span class="navbar-brand">
         <nuxt-link to="/dashboard">E-School</nuxt-link>
       </span>
-      <el-dropdown trigger="click" @click.native="showDropdown = !showDropdown" @visible-change="onDropdownChange($event)">
+      <el-dropdown trigger="click" v-if="user" @click.native="showDropdown = !showDropdown" @visible-change="onDropdownChange($event)">
         <span class="el-dropdown-link">
           <div class="toggler" :class="{ cross: showDropdown }">
             <svg viewBox="0 0 800 600">

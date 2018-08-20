@@ -44,14 +44,7 @@ export default {
   },
   methods: {
     submitResponse () {
-      let newResponse = {
-        name: this.user.name,
-        avatar: this.user.avatar.url,
-        content: this.newContent,
-        timestamp: Date.now()
-      }
-
-      this.$emit('addResponse', newResponse)
+      this.$emit('addAnswer', this.newContent)
       this.newContent = ''
     }
   }
