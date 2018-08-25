@@ -84,7 +84,7 @@ export default {
     position: relative;
 
     a {
-      color: $color-red;
+      color: $color-white;
       font-size: rem(40);
       font-weight: $font-weight-bold;
       letter-spacing: 3px;
@@ -120,7 +120,7 @@ export default {
     transition: stroke-dashoffset 0.3s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.3s cubic-bezier(0.25, -0.25, 0.75, 1.25);
     stroke-width: 20px;
     stroke-linecap: round;
-    stroke: $color-red;
+    stroke: $color-white;
     stroke-dashoffset: 0;
 
     &.top,

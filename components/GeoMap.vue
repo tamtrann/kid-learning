@@ -16,8 +16,18 @@
     <button class="geomap-btn" @click="showNav = !showNav">
       <i class="fas fa-arrow-right"></i>
     </button>
+    <div class="geomap-zoom">
+      <button class="geomap-zoom__btn" @click="zoomIn">+</button>
+      <button class="geomap-zoom__btn" @click="zoomOut">-</button>
+    </div>
     <div class="geomap">
-      <geo-chart width="800px" height="600px" :data="currentData" :label="currentLabel" :colors="colors"></geo-chart>
+      <geo-chart
+        v-if="show"
+        :width="width + 'px'"
+        :height="height + 'px'"
+        :data="currentData"
+        :label="currentLabel"
+        :colors="colors"></geo-chart>
     </div>
   </div>
 </template>
@@ -27,9 +37,12 @@
 export default {
   data () {
     return {
+      show: true,
       showNav: false,
       currentLabel: '',
       currentData: [],
+      width: 1000,
+      height: 800,
       colors: [
         '#3366CC',
         '#DC3912',
@@ -64,6 +77,22 @@ export default {
     loadData (stat) {
       this.currentLabel = stat.label
       this.currentData = stat.data.slice()
+    },
+    zoomIn () {
+      this.width = this.width + this.width * 0.1
+      this.height = this.width + this.width * 0.1
+      this.show = false
+      this.$nextTick(() => {
+        this.show = true
+      })
+    },
+    zoomOut () {
+      this.width = this.width - this.width * 0.1
+      this.height = this.width - this.width * 0.1
+      this.show = false
+      this.$nextTick(() => {
+        this.show = true
+      })
     }
   }
 }
@@ -74,7 +103,6 @@ export default {
   @include flex-center;
 
   margin: 0 auto;
-  // max-width: $geomap-width;
   padding-top: rem(30);
   position: relative;
   height: 100vh;
@@ -150,12 +178,8 @@ export default {
   &-sidebar {
     background-color: $color-dark-gray;
     box-shadow: $box-shadow-light;
-    // height: 100vh;
     min-height: 400px;
     padding: 46px rem(25);
-    // position: sticky;
-    // top: 0;
-    // bottom: 0;
 
     &-offcanvas {
       .uk-offcanvas-bar {
@@ -175,6 +199,34 @@ export default {
 
       &:hover {
         opacity: 1;
+      }
+    }
+  }
+
+  &-zoom {
+    position: absolute;
+    bottom: rem(30);
+    right: rem(30);
+    z-index: 2;
+
+    &__btn {
+      background-color: transparent;
+      border: 2px solid $color-white;
+      border-radius: 100%;
+      color: $color-white;
+      display: block;
+      font-size: 2rem;
+      font-weight: $font-weight-normal;
+      opacity: 0.8;
+      width: 50px;
+      height: 50px;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      & + & {
+        margin-top: rem(15);
       }
     }
   }

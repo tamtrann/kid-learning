@@ -7,7 +7,7 @@
         </svg>
       </button>
     </div>
-    <thread-new/>
+    <thread-new @SubmitQuestion="onSubmitQuestion"/>
     <thread
       v-for="item in threads" :key="item.id" :thread="item"
       @addAnswer="onAddAnswer($event, item.id)"/>
@@ -30,6 +30,9 @@ export default {
   methods: {
     onAddAnswer (answer, id) {
       this.$emit('AddAnswer', answer, id)
+    },
+    onSubmitQuestion (question) {
+      this.$emit('AddQuestion', question)
     }
   }
 }

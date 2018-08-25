@@ -3,7 +3,7 @@
     <button class="btn btn--dark-gray thread__btn" @click="newThread = true">Câu hỏi mới</button>
     <div class="thread__new" v-show="newThread">
       <img :src="user.avatar.url" :alt="user.name" class="thread__avatar">
-      <el-input v-model="newContent" id="newContent" type="text" @keyup.enter.native="submitResponse"></el-input>
+      <el-input v-model="newContent" id="newContent" type="text" @keyup.enter.native="submitQuestion"></el-input>
     </div>
   </div>
 </template>
@@ -22,6 +22,12 @@ export default {
     ...mapGetters({
       user: 'user'
     })
+  },
+  methods: {
+    submitQuestion () {
+      this.$emit('SubmitQuestion', this.newContent)
+      this.newContent = ''
+    }
   }
 }
 </script>

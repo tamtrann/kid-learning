@@ -1,6 +1,6 @@
 <template>
   <div class="thread">
-    <div class="thread__topic">
+    <div class="thread__topic" v-if="thread.user">
       <img :src="thread.user.avatar.url" :alt="thread.user.name" class="thread__avatar">
       <div class="thread__responses__item__body">
         <span class="thread__user">{{ thread.user.name }}</span>

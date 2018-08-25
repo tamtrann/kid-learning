@@ -51,6 +51,19 @@ export const actions = {
       }
       throw error
     }
+  },
+
+  async ADD_QUESTION ({ commit }, { question, lessonId }) {
+    console.log(question, lessonId)
+    try {
+      const { data } = await axios.post('/api/question', { question, lessonId })
+      console.log(data)
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        throw new Error('Bad credentials')
+      }
+      throw error
+    }
   }
 }
 

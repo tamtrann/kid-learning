@@ -118,11 +118,18 @@ export default {
   &-sidebar {
     background-color: #2e3d49;
     box-shadow: $box-shadow-light;
-    width: 300px;
-    height: 100%;
     overflow: hidden;
-    padding: 46px rem(25);
-    position: relative;
+    padding: 30px 15px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+
+    @include media(">=sm") {
+      height: 100%;
+      padding: 46px rem(25);
+      position: relative;
+      width: 300px;
+    }
 
     .btn {
       background-color: none;
@@ -144,7 +151,10 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: rem(20);
+
+    @include media(">=sm") {
+      margin-bottom: rem(20);
+    }
   }
 
   &-intro {
@@ -155,10 +165,15 @@ export default {
   }
 
   &-lessons {
-    height: -webkit-fill-available;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    z-index: 1;
+    display: none;
+
+    @include media(">=sm") {
+      display: block;
+      height: -webkit-fill-available;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      z-index: 2;
+    }
   }
 
   .btn {

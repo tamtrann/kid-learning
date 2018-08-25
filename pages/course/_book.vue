@@ -7,7 +7,7 @@
       <vk-offcanvas flipped overlay :show.sync="noteIsShow">
         <note-taker :lessonId="notesId"/>
       </vk-offcanvas>
-      <thread-modal :threads="threads" @AddAnswer="onAddAnswer"/>
+      <thread-modal :threads="threads" @AddQuestion="onAddQuestion" @AddAnswer="onAddAnswer"/>
       <exercise-modal/>
       <mindmap-modal/>
     </div>
@@ -85,6 +85,19 @@ export default {
         await this.$store.dispatch('ADD_ANSWER', {
           answer,
           id
+        })
+        axios.get(`https://thesiseducation.herokuapp.com/question`).then(res => {
+          this.threads = res.data.slice()
+        })
+      } catch (e) {
+        this.error = e.message
+      }
+    },
+    async onAddQuestion (question) {
+      try {
+        await this.$store.dispatch('ADD_QUESTION', {
+          question: question,
+          lessonId: this.notesId
         })
         axios.get(`https://thesiseducation.herokuapp.com/question`).then(res => {
           this.threads = res.data.slice()

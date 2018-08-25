@@ -1,3 +1,20 @@
+function shuffle(array) {
+  let currentIndex = array.length
+  let newArray = array.slice()
+  let temporaryValue, randomIndex
+
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1
+
+    temporaryValue = newArray[currentIndex]
+    newArray[currentIndex] = newArray[randomIndex]
+    newArray[randomIndex] = temporaryValue
+  }
+
+  return newArray;
+}
+
 export const state = () => ({
   title: '',
   exerciseQuestions: [],
@@ -22,7 +39,7 @@ export const mutations = {
 
 export const getters = {
   title: state => state.title,
-  exerciseQuestions: state => state.exerciseQuestions,
+  exerciseQuestions: state => shuffle(state.exerciseQuestions),
   grade: state => state.grade,
   submitted: state => state.submitted,
   timeLimitation: state => state.timeLimitation

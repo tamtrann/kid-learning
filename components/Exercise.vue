@@ -7,7 +7,7 @@
     <exercise-question
       v-for="(exerciseQuestion, index) in exerciseQuestions"
       :key="index" :question="exerciseQuestion" :index="index"></exercise-question>
-    <el-button type="success" @click="submit">HOÀN TẤT</el-button>
+    <el-button type="success" @click="getScore">HOÀN TẤT</el-button>
   </div>
 </template>
 
@@ -33,10 +33,11 @@ export default {
     }),
     getScore () {
       this.$alert('Điểm đạt được: ' + this.grade + '/' + this.exerciseQuestions.length, 'KẾT QUẢ', {
-        showCancelButton: true,
+        // showCancelButton: true,
         confirmButtonText: 'Hoàn tất',
-        cancelButtonText: 'Làm lại',
+        // cancelButtonText: 'Làm lại',
         callback: action => {
+          this.$modal.hide('exercise')
           this.$message({
             type: 'success',
             message: `Cập nhật điểm thành công`
@@ -51,6 +52,7 @@ export default {
 <style lang="scss">
 .exercise {
   &__title {
+    color: $color-white;
     margin-bottom: rem(20);
   }
 

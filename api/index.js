@@ -47,6 +47,19 @@ router.post('/answer', (req, res) => {
   })
 })
 
+router.post('/question', (req, res) => {
+  console.log(req.body)
+  axios.post('https://thesiseducation.herokuapp.com/question', {
+    content: req.body.question,
+    lesson: req.body.lessonId,
+    user: req.session.user.id
+  }).then(function (response) {
+    return res.json(JSON.parse(JSON.stringify(response.data)))
+  }).catch(function (error) {
+    console.log(error)
+  })
+})
+
 // Export the server middleware
 export default {
   path: '/api',

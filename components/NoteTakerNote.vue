@@ -2,7 +2,7 @@
   <li class="note" :class="{ editing: note == editedNote }">
     <el-input v-model="editedNote.name"></el-input>
     <el-input type="textarea" :rows="4" v-model="editedNote.content" ref="input" @keydown.native.exact.enter.prevent="doneEdit" @blur.native="doneEdit" @keyup.native.esc="cancelEdit"></el-input>
-    <button class="note__remove" @click="deleteNote"><i class="material-icons">remove</i></button>
+    <button class="note__remove" @click="deleteNote"><i class="fa fa-trash"></i></button>
   </li>
 </template>
 

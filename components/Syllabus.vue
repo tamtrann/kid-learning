@@ -191,15 +191,15 @@ export default {
 
     background-color: $color-white;
     border-radius: 8px;
-    box-shadow: $box-shadow-normal;
+    box-shadow: $box-shadow-heavy;
     cursor: pointer;
     height: 200px;
     margin-bottom: rem(20);
-    opacity: 0.8;
+    // opacity: 0.8;
 
     &:hover {
-      box-shadow: $box-shadow-light;
-      opacity: 1;
+      box-shadow: $box-shadow-normal;
+      // opacity: 1;
     }
 
     &__name {
