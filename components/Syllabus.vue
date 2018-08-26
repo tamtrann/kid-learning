@@ -250,8 +250,6 @@ export default {
   }
 
   &__card {
-    // background-color: $color-white;
-    // border-radius: 6px;
     padding: 0 rem(30);
     position: relative;
 
@@ -262,7 +260,6 @@ export default {
     }
 
     & + & {
-      // border-top: 0.5px solid rgba($color: $color-gray, $alpha: 0.2);
       margin-top: rem(20);
     }
   }
@@ -284,7 +281,7 @@ export default {
   }
 
   &__description {
-    color: rgba($color: $color-white, $alpha: 0.6);
+    color: rgba($color: $color-text, $alpha: 0.8);
     margin-bottom: rem(20);
   }
 
@@ -292,8 +289,8 @@ export default {
     display: none;
 
     @include media(">=sm") {
-      border-radius: 4px;
-      box-shadow: $box-shadow-normal;
+      border-radius: 8px;
+      box-shadow: $box-shadow-heavy;
       display: block;
       flex-grow: 1;
       max-width: 50%;

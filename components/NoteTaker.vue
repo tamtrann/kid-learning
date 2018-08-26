@@ -1,7 +1,7 @@
 <template>
   <div class="notes">
     <h2 class="notes__heading">Ghi chú</h2>
-    <note-taker-new-note/>
+    <note-taker-new-note @AddNote="onAddNote"/>
     <!-- {{ lessonId }} -->
     <ul class="notes__list">
       <li is="note-taker-note" v-for="note in notes(lessonId)" :key="note.id" :note="note"></li>
@@ -27,8 +27,13 @@ export default {
     ...mapGetters({
       notes: 'note/notes'
     }),
-    remaining: function () {
+    remaining () {
       return this.notes(this.lessonId).length
+    }
+  },
+  methods: {
+    onAddNote (newNote) {
+      this.$emit('AddNote', newNote)
     }
   }
 }

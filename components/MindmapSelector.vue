@@ -23,8 +23,5 @@ export default {
       this.$emit('LoadMindmap', mindmap)
     }
   }
-  // props: {
-  //   'mindmapList': Object
-  // }
 }
 </script>

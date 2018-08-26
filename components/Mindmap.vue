@@ -113,7 +113,7 @@ export default {
   &-wrapper {
     @include block-center;
 
-    background-color: $color-dark-gray;
+    background-color: $color-white;
     border-radius: 10px;
     box-shadow: $box-shadow-normal;
     width: 100%;
@@ -215,7 +215,6 @@ export default {
   &-list {
     display: flex;
     align-items: flex-start;
-    // justify-content: space-between;
     list-style: none;
     margin: 0 -15px rem(30);
     padding-left: 0;
@@ -223,17 +222,16 @@ export default {
     &__item {
       @include flex-center;
 
-      background-color: rgba($color-dark-gray, 0.8);
+      background-color: darken($color: $color-white, $amount: 1%);
       border-radius: 10px;
-      box-shadow: $box-shadow-light;
+      box-shadow: $box-shadow-normal;
       cursor: pointer;
       margin: 0 15px;
       width: 200px;
       height: 200px;
 
       &:hover {
-        background-color: $color-dark-gray;
-        box-shadow: 0 2px 8px 0 rgba(46, 61, 73, 0.2);
+        box-shadow: $box-shadow-light;
       }
 
       .mindmap-svg {
@@ -248,20 +246,6 @@ export default {
 
   &-modal {
     min-height: 100vh;
-  }
-
-  .el-radio__label {
-    color: $color-white;
-  }
-
-  .el-input__inner {
-    background-color: rgba($color: $color-dark-gray, $alpha: 0.8);
-    border: 1px solid rgba($color: $color-white, $alpha: 0.2);
-    color: $color-white;
-  }
-
-  .el-input.is-disabled .el-input__inner {
-    background-color: $color-gray;
   }
 }
 </style>

@@ -44,7 +44,6 @@ export const actions = {
   async ADD_ANSWER ({ commit }, { answer, id }) {
     try {
       const { data } = await axios.post('/api/answer', { answer, id })
-      console.log(data)
     } catch (error) {
       if (error.response && error.response.status === 401) {
         throw new Error('Bad credentials')
@@ -54,10 +53,22 @@ export const actions = {
   },
 
   async ADD_QUESTION ({ commit }, { question, lessonId }) {
-    console.log(question, lessonId)
     try {
       const { data } = await axios.post('/api/question', { question, lessonId })
-      console.log(data)
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        throw new Error('Bad credentials')
+      }
+      throw error
+    }
+  },
+
+  async ADD_NOTE ({ commit }, { note, lessonId, gradeId }) {
+    try {
+      const { data } = await axios.post('/api/note', { note, lessonId, gradeId })
+      axios.get(`https://thesiseducation.herokuapp.com/note/?user=${this.state.user.id}`).then(res => {
+        commit('note/SET_NOTES', res.data)
+      })
     } catch (error) {
       if (error.response && error.response.status === 401) {
         throw new Error('Bad credentials')

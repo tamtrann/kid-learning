@@ -107,7 +107,7 @@ export default {
   }
 
   &__text {
-    color: rgba($color: $color-white, $alpha: 0.8);
+    color: rgba($color: $color-text, $alpha: 0.8);
     font-size: $font-size-p;
     font-weight: $font-weight-bold;
     margin-bottom: rem(8);
@@ -118,18 +118,12 @@ export default {
   }
 
   .el-radio {
-    color: rgba($color: $color-white, $alpha: 0.8);
+    color: rgba($color: $color-text, $alpha: 0.8);
   }
 
   .el-input {
     margin-right: rem(10);
     width: auto;
-  }
-
-  .el-input__inner {
-    background-color: rgba($color: $color-dark-gray, $alpha: 0.8);
-    border: 1px solid rgba($color: $color-white, $alpha: 0.2);
-    color: $color-white;
   }
 }
 </style>

@@ -52,12 +52,12 @@ export default {
 <style lang="scss">
 .exercise {
   &__title {
-    color: $color-white;
+    color: $color-theme;
     margin-bottom: rem(20);
   }
 
   &__time {
-    color: rgba($color: $color-white, $alpha: 0.8);
+    color: rgba($color: $color-red, $alpha: 0.8);
     font-weight: $font-weight-bold;
     margin-bottom: rem(10);
   }

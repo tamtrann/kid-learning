@@ -22,21 +22,18 @@
 
       background-color: transparent;
       border-bottom: none;
-      color: $color-white;
+      // color: $color-white;
       font-family: $font-primary;
       font-size: $font-size-p;
       font-weight: $font-weight-bold;
       height: auto;
       line-height: 1.5;
-      opacity: 0.5;
+      opacity: 0.8;
 
       &:hover,
+      &:focus
       &.is-active {
         opacity: 1;
-      }
-
-      &:focus {
-        color: $color-white;
       }
     }
 

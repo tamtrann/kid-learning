@@ -31,7 +31,7 @@ export default {
     convertObjectToArray (object) {
       let array = object.map(item => Object.keys(item).map(key => {
         if (key === 'data') {
-          return item[key].replace(',', '')
+          return item[key].replace(/,/g, '')
         }
         return item[key]
       }))

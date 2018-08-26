@@ -8,8 +8,10 @@
           </nuxt-link>
         </div>
         <div class="geomap-nav">
-          <h5 class="geomap-nav__title">Bản đồ tương tác so sánh số liệu</h5>
-          <button class="geomap-nav__item" v-for="(stat, index) in stats" :key="index" @click="loadData(stat)">{{ stat.label }}</button>
+          <h6 class="geomap-nav__title">Bản đồ tương tác so sánh số liệu</h6>
+          <button class="geomap-nav__item"
+            v-for="(stat, index) in stats"
+            :key="index" @click="loadData(stat)">{{ stat.label }}</button>
         </div>
       </div>
     </vk-offcanvas>
@@ -27,7 +29,7 @@
         :height="height + 'px'"
         :data="currentData"
         :label="currentLabel"
-        :colors="colors"></geo-chart>
+        :library="options"></geo-chart>
     </div>
   </div>
 </template>
@@ -41,30 +43,47 @@ export default {
       showNav: false,
       currentLabel: '',
       currentData: [],
-      width: 1000,
-      height: 800,
-      colors: [
-        '#3366CC',
-        '#DC3912',
-        '#FF9900',
-        '#109618',
-        '#990099',
-        '#3B3EAC',
-        '#0099C6',
-        '#DD4477',
-        '#66AA00',
-        '#B82E2E',
-        '#316395',
-        '#994499',
-        '#22AA99',
-        '#AAAA11',
-        '#6633CC',
-        '#E67300',
-        '#8B0707',
-        '#329262',
-        '#5574A6',
-        '#3B3EAC',
-      ]
+      width: 900,
+      height: 700,
+      options: {
+        sizeAxis: {
+          minValue: 0,
+          maxValue: 100
+        },
+        colorAxis: {
+          colors: ['#f56c6c', '#4278dc']
+        },
+        legend: {
+          textStyle: {
+            color: '#4278dc',
+            fontName: 'Open Sans',
+            fontSize: 14,
+            bold: true
+          }
+        }
+      }
+      // colors: [
+      //   '#3366CC',
+      //   '#DC3912',
+      //   '#FF9900',
+      //   '#109618',
+      //   '#990099',
+      //   '#3B3EAC',
+      //   '#0099C6',
+      //   '#DD4477',
+      //   '#66AA00',
+      //   '#B82E2E',
+      //   '#316395',
+      //   '#994499',
+      //   '#22AA99',
+      //   '#AAAA11',
+      //   '#6633CC',
+      //   '#E67300',
+      //   '#8B0707',
+      //   '#329262',
+      //   '#5574A6',
+      //   '#3B3EAC',
+      // ]
     }
   },
   props: [
@@ -110,9 +129,12 @@ export default {
   width: 100%;
 
   &-btn {
-    background-color: $color-dark-gray;
-    border: none;
-    color: $color-white;
+    background-color: white;
+    border: 0.5px solid darken($color: $color-white, $amount: 3%);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: $box-shadow-heavy;
+    color: $color-text;
     padding: rem(10);
     position: fixed;
     left: 0;
@@ -128,24 +150,13 @@ export default {
   }
 
   &-container {
-    background-color: $color-dark-blue;
+    background-color: $color-white;
     display: flex;
     align-items: flex-start;
-    // width: $geomap-container-width;
     min-height: 100vh;
     position: relative;
     background-attachment: fixed;
     background-size: cover;
-
-    // &::before {
-    //   content: "";
-    //   background: rgba(99, 99, 99, 0.8);
-    //   position: absolute;
-    //   left: 0;
-    //   top: 0;
-    //   width: 100%;
-    //   height: 100%;
-    // }
   }
 
   &-nav {
@@ -158,10 +169,10 @@ export default {
     &__item {
       background-color: transparent;
       border: none;
-      color: $color-white;
+      color: $color-text;
       display: block;
       margin-bottom: rem(16);
-      opacity: 0.5;
+      opacity: 0.8;
       padding: 0;
 
       &:hover {
@@ -171,12 +182,13 @@ export default {
     }
 
     &__title {
-      color: $color-white;
+      color: $color-text;
+      text-transform: uppercase;
     }
   }
 
   &-sidebar {
-    background-color: $color-dark-gray;
+    background-color: $color-white;
     box-shadow: $box-shadow-light;
     min-height: 400px;
     padding: 46px rem(25);
@@ -192,7 +204,7 @@ export default {
       background-color: none;
       border: none;
       box-shadow: none;
-      color: $color-white;
+      color: $color-text;
       font-weight: $font-weight-semi;
       opacity: 0.7;
       padding: 0;
@@ -211,9 +223,9 @@ export default {
 
     &__btn {
       background-color: transparent;
-      border: 2px solid $color-white;
+      border: 2px solid $color-dark-gray;
       border-radius: 100%;
-      color: $color-white;
+      color: $color-dark-blue;
       display: block;
       font-size: 2rem;
       font-weight: $font-weight-normal;
@@ -231,8 +243,8 @@ export default {
     }
   }
 
-  rect {
-    fill: $color-dark-blue !important;
-  }
+  // rect {
+  //   fill: $color-dark-blue !important;
+  // }
 }
 </style>

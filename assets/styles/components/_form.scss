@@ -3,6 +3,8 @@
 // ------------------------------------------------------------------------------------------
 
 .el-input {
+  @extend %default-transition-style;
+
   &__inner {
     .el--warning & {
       border-color: $color-red;

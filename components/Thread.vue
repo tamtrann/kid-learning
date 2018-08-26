@@ -56,7 +56,7 @@ export default {
   margin-bottom: rem(20);
 
   &__avatar {
-    border: 2px solid $color-white;
+    border: 2px solid $color-dark-blue;
     border-radius: 100%;
     margin-right: rem(20);
     width: rem(54);
@@ -69,7 +69,7 @@ export default {
   }
 
   &__content {
-    color: $color-white;
+    color: $color-text;
     letter-spacing: 0.5px;
   }
 
@@ -85,16 +85,17 @@ export default {
     padding-left: rem(80);
 
     &__item {
-      border-bottom: 1px solid rgba($color: $color-gray, $alpha: 0.5);
-      // border-radius: 4px;
-      // box-shadow: $box-shadow-light;
       display: flex;
       align-items: flex-start;
       padding: rem(15);
       position: relative;
 
       &__body {
+        // background-color: darken($color: $color-white, $amount: 1%);
+        border-radius: 20px;
+        box-shadow: $box-shadow-normal;
         flex-grow: 1;
+        padding: rem(20);
       }
 
       &--new {
@@ -106,7 +107,7 @@ export default {
   }
 
   &__time {
-    color: $color-white;
+    color: $color-text;
     display: block;
     font-size: $font-size-sm;
     text-align: right;
@@ -120,22 +121,12 @@ export default {
   }
 
   &__user {
-    color: $color-white;
+    color: $color-text;
     font-weight: $font-weight-bold;
   }
 
   &-modal {
     min-height: 100vh;
-  }
-
-  .el-input__inner {
-    background-color: rgba($color: $color-dark-gray, $alpha: 0.8);
-    border: 1px solid rgba($color: $color-white, $alpha: 0.2);
-    color: $color-white;
-  }
-
-  .el-input.is-disabled .el-input__inner {
-    background-color: $color-gray;
   }
 }
 </style>

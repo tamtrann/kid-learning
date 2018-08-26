@@ -48,11 +48,24 @@ router.post('/answer', (req, res) => {
 })
 
 router.post('/question', (req, res) => {
-  console.log(req.body)
   axios.post('https://thesiseducation.herokuapp.com/question', {
     content: req.body.question,
     lesson: req.body.lessonId,
     user: req.session.user.id
+  }).then(function (response) {
+    return res.json(JSON.parse(JSON.stringify(response.data)))
+  }).catch(function (error) {
+    console.log(error)
+  })
+})
+
+router.post('/note', (req, res) => {
+  axios.post('https://thesiseducation.herokuapp.com/note', {
+    name: req.body.note.name,
+    content: req.body.note.content,
+    user: req.session.user.id,
+    lesson: req.body.lessonId,
+    grade: req.body.gradeId,
   }).then(function (response) {
     return res.json(JSON.parse(JSON.stringify(response.data)))
   }).catch(function (error) {

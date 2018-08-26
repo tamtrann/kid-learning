@@ -116,7 +116,7 @@ export default {
   }
 
   &-sidebar {
-    background-color: #2e3d49;
+    background-color: $color-white;
     box-shadow: $box-shadow-light;
     overflow: hidden;
     padding: 30px 15px;
@@ -134,7 +134,7 @@ export default {
     .btn {
       background-color: none;
       border: none;
-      color: $color-white;
+      color: $color-text;
       font-size: $font-size-sm;
       font-weight: $font-weight-semi;
       margin-left: 0;
@@ -142,6 +142,7 @@ export default {
       padding: 0;
 
       &:hover {
+        color: $color-theme;
         opacity: 1;
       }
     }
@@ -158,7 +159,7 @@ export default {
   }
 
   &-intro {
-    color: rgba($color: $color-white, $alpha: 0.6);
+    color: rgba($color: $color-text, $alpha: 0.8);
     font-size: $font-size-sm;
     margin-bottom: rem(15);
     text-align: justify;
@@ -182,44 +183,8 @@ export default {
 }
 
 .el-collapse {
-  border: none;
-  list-style: none;
-  padding-left: 0;
-
   &-item {
-    cursor: pointer;
-    padding: rem(15) 0;
-
-    &__arrow {
-      line-height: inherit;
-      margin-left: 4px;
-    }
-
-    &__content {
-      margin-top: rem(10);
-      padding-bottom: 0;
-    }
-
     &__header {
-      @extend %default-transition-style;
-
-      background-color: transparent;
-      border-bottom: none;
-      color: $color-white;
-      font-family: $font-primary;
-      height: auto;
-      line-height: 1.5;
-      opacity: 0.5;
-
-      &:hover,
-      &.is-active {
-        opacity: 1;
-      }
-
-      &:focus {
-        color: $color-white;
-      }
-
       .el-collapse-part & {
         font-size: $font-size-p;
         font-weight: $font-weight-bold;
@@ -235,11 +200,6 @@ export default {
         letter-spacing: 0.5px;
         text-transform: capitalize;
       }
-    }
-
-    &__wrap {
-      background-color: transparent;
-      border-bottom: none;
     }
   }
 }
