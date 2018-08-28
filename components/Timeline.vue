@@ -1,34 +1,53 @@
 <template>
   <div class="timeline-container">
-    <vk-offcanvas class="timeline-sidebar-offcanvas" :show.sync="showNav">
+    <vk-offcanvas
+      :show.sync="showNav"
+      class="timeline-sidebar-offcanvas">
       <div class="timeline-sidebar">
         <div class="timeline-buttons">
-          <nuxt-link to="/dashboard" class="btn">
-            <i class="fas fa-arrow-left"></i>
+          <nuxt-link
+            to="/dashboard"
+            class="btn">
+            <i class="fas fa-arrow-left"/>
           </nuxt-link>
         </div>
         <div class="timeline-nav">
           <h6 class="timeline-nav__title">Dòng sự kiện lịch sử</h6>
-          <el-collapse v-model="activeMilestone" accordion>
-            <el-collapse-item v-for="milestone in milestones" :key="milestone.id" :title="milestone.name" :name="milestone.name">
-              <el-collapse v-model="activeTimeline" accordion>
+          <el-collapse
+            v-model="activeMilestone"
+            accordion>
+            <el-collapse-item
+              v-for="milestone in milestones"
+              :key="milestone.id"
+              :title="milestone.name"
+              :name="milestone.name">
+              <el-collapse
+                v-model="activeTimeline"
+                accordion>
                 <button
-                  class="timeline-nav__item" v-for="timeline in milestone.timelines"
-                  :key="timeline.id" @click="goTo(timeline.id)">{{ timeline.name }}</button>
+                  v-for="timeline in milestone.timelines"
+                  :key="timeline.id"
+                  class="timeline-nav__item"
+                  @click="goTo(timeline.id)">{{ timeline.name }}</button>
               </el-collapse>
             </el-collapse-item>
           </el-collapse>
         </div>
       </div>
     </vk-offcanvas>
-    <button class="timeline-btn" @click="showNav = !showNav">
-      <i class="fas fa-arrow-right"></i>
+    <button
+      class="timeline-btn"
+      @click="showNav = !showNav">
+      <i class="fas fa-arrow-right"/>
     </button>
     <div class="timeline">
       <template v-for="milestone in milestones">
         <timeline-item
           v-for="timeline in milestone.timelines"
-          :key="timeline.id" :timeline="timeline" :id="timeline.id" ref="timeline"/>
+          ref="timeline"
+          :key="timeline.id"
+          :timeline="timeline"
+          :id="timeline.id"/>
       </template>
     </div>
   </div>
@@ -40,6 +59,16 @@ import TimelineItem from '~/components/TimelineItem'
 import NoteTaker from '~/components/NoteTaker'
 
 export default {
+  components: {
+    TimelineItem,
+    NoteTaker
+  },
+  props: {
+    milestones: {
+      type: Array,
+      required: true
+    }
+  },
   data () {
     return {
       showNav: false,
@@ -47,13 +76,6 @@ export default {
       activeTimeline: ''
     }
   },
-  components: {
-    TimelineItem,
-    NoteTaker
-  },
-  props: [
-    'milestones'
-  ],
   mounted () {
     this.showNav = true
   },

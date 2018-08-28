@@ -1,32 +1,77 @@
 <template>
   <div class="mindmap-creator">
-    <h2 class="mindmap-heading">Tạo sơ đồ tư duy</h2>
+    <h2 class="mindmap-heading">
+      <button
+        class="btn mindmap-back"
+        @click="$emit('Back')"><i class="fas fa-chevron-left"/></button>
+      {{ mindmap.name ? mindmap.name : 'Tạo sơ đồ tư duy' }}</h2>
     <el-row :gutter="20">
       <el-col :sm="16">
         <div class="mindmap-wrapper">
-          <mindmap :nodes="nodes" :connections="connections" :editable="true" v-if="show"/>
+          <mindmap
+            v-if="show"
+            :nodes="mindmap.nodes"
+            :connections="mindmap.connections"
+            :editable="true"/>
         </div>
       </el-col>
       <el-col :sm="8">
         <div class="mindmap-controller">
-          <h4 class="mindmap-heading">Thêm node</h4>
-          <el-input class="mindmap-controller__input" placeholder="Tên node" v-model="newNode.text"></el-input>
-          <el-radio-group class="mindmap-controller__group" v-model="isChildNode">
-            <el-radio :label="false">Không có node cha</el-radio>
-            <el-radio :label="true">Có node cha</el-radio>
+          <el-input
+            v-model="mindmap.name"
+            placeholder="Tên mindmap"
+            prefix-icon="el-icon-edit"
+            type="text"
+            class="mindmap-controller__input"/>
+          <!-- <h4 class="mindmap-heading">Thêm nút</h4> -->
+          <el-input
+            v-model="newNode.text"
+            placeholder="Thêm nút"
+            prefix-icon="el-icon-plus"
+            type="text"
+            class="mindmap-controller__input"/>
+          <el-radio-group
+            v-model="isChildNode"
+            class="mindmap-controller__group">
+            <el-radio :label="false">Không có nút cha</el-radio>
+            <el-radio :label="true">Có nút cha</el-radio>
           </el-radio-group>
-          <el-select class="mindmap-controller__select" :class="{'el--warning': isChildNode && !parentNode}" v-model="parentNode" placeholder="Node cha" :disabled="!isChildNode">
-            <el-option v-for="item in nodes" :key="item.text" :label="item.text" :value="item.text"></el-option>
+          <el-select
+            v-model="parentNode"
+            :disabled="!isChildNode"
+            :class="{'el--warning': isChildNode && !parentNode}"
+            class="mindmap-controller__select"
+            placeholder="Node cha">
+            <el-option
+              v-for="item in mindmap.nodes"
+              :key="item.text"
+              :label="item.text"
+              :value="item.text"/>
           </el-select>
-          <el-radio-group class="mindmap-controller__group" v-model="isConnectedNode">
-            <el-radio :label="false">Không có node liên kết</el-radio>
-            <el-radio :label="true">Có node liên kết</el-radio>
+          <el-radio-group
+            v-model="isConnectedNode"
+            class="mindmap-controller__group">
+            <el-radio :label="false">Không có nút liên kết</el-radio>
+            <el-radio :label="true">Có nút liên kết</el-radio>
           </el-radio-group>
-          <el-select class="mindmap-controller__select" :class="{'el--warning': isConnectedNode && !targetNode}" v-model="targetNode" placeholder="Node liên kết" :disabled="!isConnectedNode">
-            <el-option v-for="item in nodes" :key="item.text" :label="item.text" :value="item.text"></el-option>
+          <el-select
+            v-model="targetNode"
+            :disabled="!isConnectedNode"
+            :class="{'el--warning': isConnectedNode && !targetNode}"
+            class="mindmap-controller__select"
+            placeholder="Node liên kết">
+            <el-option
+              v-for="item in mindmap.nodes"
+              :key="item.text"
+              :label="item.text"
+              :value="item.text"/>
           </el-select>
-          <el-button type="primary" @click="addNode">Thêm</el-button>
-          <el-button type="success" @click="complete">Hoàn tất</el-button>
+          <button
+            class="btn btn--default"
+            @click="addNode">Thêm</button>
+          <button
+            class="btn btn--green"
+            @click="complete"><i class="fas fa-check"/>Hoàn tất</button>
         </div>
       </el-col>
     </el-row>
@@ -35,10 +80,16 @@
 
 <script>
 export default {
+  props: {
+    mindmap: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
       show: true,
-      name: '',
+      // name: '',
       newNode: {
         text: '',
         fx: 0,
@@ -58,24 +109,28 @@ export default {
       col: 0
     }
   },
-  props: {
-    id: {
-      type: String,
-      required: false
+  watch: {
+    mindmap () {
+      this.show = false
+      this.$nextTick(() => {
+        this.show = true
+      })
     },
-    nodes: {
-      type: Array,
-      required: false
+    isChildNode () {
+      if (this.isChildNode === false) {
+        this.parentNode = ''
+      }
     },
-    connections: {
-      type: Array,
-      required: false
+    isConnectedNode () {
+      if (this.isConnectedNode === false) {
+        this.targetNode = ''
+      }
     }
   },
   methods: {
     addNode () {
       if (this.isChildNode) {
-        this.nodes.forEach(node => {
+        this.mindmap.nodes.forEach(node => {
           if (node.text === this.parentNode) {
             node.nodes.push(this.newNode)
             this.newNode = {
@@ -87,9 +142,9 @@ export default {
           }
         })
       } else {
-        if (this.nodes.length > 0) {
-          this.row = Math.floor(Math.log2(this.nodes.length))
-          this.col = this.nodes.length - Math.pow(2, this.row)
+        if (this.mindmap.nodes.length > 0) {
+          this.row = Math.floor(Math.log2(this.mindmap.nodes.length))
+          this.col = this.mindmap.nodes.length - Math.pow(2, this.row)
 
           this.newNode.fx = (this.col + 1) * this.delta
           this.newNode.fy = this.row * this.delta
@@ -98,13 +153,13 @@ export default {
           this.newNode.fy = 1
         }
 
-        this.nodes.push(this.newNode)
+        this.mindmap.nodes.push(this.newNode)
       }
 
       if (this.targetNode) {
         this.newConnection.source = this.newNode
         this.newConnection.target = this.targetNode
-        this.connections.push(this.newConnection)
+        this.mindmap.connections.push(this.newConnection)
       }
 
       this.newNode = {
@@ -125,30 +180,12 @@ export default {
       })
     },
     complete () {
-      if (this.id) {
-        this.$emit('UpdateMindmap', this.id, this.nodes, this.connections)
+      if (this.mindmap.id) {
+        this.$emit('UpdateMindmap', this.mindmap)
       } else {
-        this.$emit('AddMindmap', this.id, this.nodes, this.connections)
+        this.$emit('AddMindmap', this.mindmap)
       }
     }
   },
-  watch: {
-    id () {
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
-    },
-    isChildNode () {
-      if (this.isChildNode === false) {
-        this.parentNode = ''
-      }
-    },
-    isConnectedNode () {
-      if (this.isConnectedNode === false) {
-        this.targetNode = ''
-      }
-    }
-  }
 }
 </script>

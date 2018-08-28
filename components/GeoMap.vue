@@ -1,26 +1,38 @@
 <template>
   <div class="geomap-container">
-    <vk-offcanvas class="geomap-sidebar-offcanvas" :show.sync="showNav">
+    <vk-offcanvas
+      :show.sync="showNav"
+      class="geomap-sidebar-offcanvas">
       <div class="geomap-sidebar">
         <div class="geomap-buttons">
-          <nuxt-link to="/dashboard" class="btn">
-            <i class="fas fa-arrow-left"></i>
+          <nuxt-link
+            to="/dashboard"
+            class="btn">
+            <i class="fas fa-arrow-left"/>
           </nuxt-link>
         </div>
         <div class="geomap-nav">
           <h6 class="geomap-nav__title">Bản đồ tương tác so sánh số liệu</h6>
-          <button class="geomap-nav__item"
+          <button
             v-for="(stat, index) in stats"
-            :key="index" @click="loadData(stat)">{{ stat.label }}</button>
+            :key="index"
+            class="geomap-nav__item"
+            @click="loadData(stat)">{{ stat.label }}</button>
         </div>
       </div>
     </vk-offcanvas>
-    <button class="geomap-btn" @click="showNav = !showNav">
-      <i class="fas fa-arrow-right"></i>
+    <button
+      class="geomap-btn"
+      @click="showNav = !showNav">
+      <i class="fas fa-arrow-right"/>
     </button>
     <div class="geomap-zoom">
-      <button class="geomap-zoom__btn" @click="zoomIn">+</button>
-      <button class="geomap-zoom__btn" @click="zoomOut">-</button>
+      <button
+        class="geomap-zoom__btn"
+        @click="zoomIn">+</button>
+      <button
+        class="geomap-zoom__btn"
+        @click="zoomOut">-</button>
     </div>
     <div class="geomap">
       <geo-chart
@@ -29,7 +41,7 @@
         :height="height + 'px'"
         :data="currentData"
         :label="currentLabel"
-        :library="options"></geo-chart>
+        :library="options"/>
     </div>
   </div>
 </template>
@@ -37,6 +49,12 @@
 <script>
 
 export default {
+  props: {
+    stats: {
+      type: Array,
+      required: true
+    }
+  },
   data () {
     return {
       show: true,
@@ -62,33 +80,8 @@ export default {
           }
         }
       }
-      // colors: [
-      //   '#3366CC',
-      //   '#DC3912',
-      //   '#FF9900',
-      //   '#109618',
-      //   '#990099',
-      //   '#3B3EAC',
-      //   '#0099C6',
-      //   '#DD4477',
-      //   '#66AA00',
-      //   '#B82E2E',
-      //   '#316395',
-      //   '#994499',
-      //   '#22AA99',
-      //   '#AAAA11',
-      //   '#6633CC',
-      //   '#E67300',
-      //   '#8B0707',
-      //   '#329262',
-      //   '#5574A6',
-      //   '#3B3EAC',
-      // ]
     }
   },
-  props: [
-    'stats'
-  ],
   mounted () {
     this.showNav = true
   },

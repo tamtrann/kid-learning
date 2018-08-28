@@ -3,9 +3,11 @@
 // ------------------------------------------------------------------------------------------
 
 .el-input {
-  @extend %default-transition-style;
-
   &__inner {
+    @extend %default-transition-style;
+
+    border-color: darken($color: $color-white, $amount: 10%);
+
     .el--warning & {
       border-color: $color-red;
     }
@@ -18,7 +20,9 @@
       border-color: $color-red !important;
     }
 
+    .el-input.is-active &,
     &:focus {
+      border-color: darken($color: $color-white, $amount: 5%);
       box-shadow: $box-shadow-normal;
     }
   }
@@ -93,6 +97,20 @@
 .el-radio {
   margin-right: rem(20);
   margin-bottom: rem(8);
+
+  &__input {
+    &.is-checked {
+      & + .el-radio__label {
+        color: $color-dark-blue;
+        font-weight: $font-weight-bold;
+      }
+
+      .el-radio__inner {
+        border-color: $color-theme;
+        background: $color-theme;
+      }
+    }
+  }
 
   &__label {
     font-size: $font-size-p;

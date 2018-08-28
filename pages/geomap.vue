@@ -9,13 +9,13 @@ import axios from 'axios'
 import GeoMap from '~/components/GeoMap'
 
 export default {
+  components: {
+    GeoMap
+  },
   data () {
     return {
       stats: []
     }
-  },
-  components: {
-    GeoMap
   },
   mounted () {
     axios.get(`https://thesiseducation.herokuapp.com/geosetting`).then(res => {
@@ -23,8 +23,6 @@ export default {
       this.stats.forEach(item => {
         item.data = this.convertObjectToArray(item.data).slice()
       })
-      // console.log(this.setting[0].data)
-      // this.setting = JSON.parse(JSON.stringify(res.data))
     })
   },
   methods: {

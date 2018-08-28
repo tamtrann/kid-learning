@@ -1,24 +1,45 @@
 <template>
-  <form class="form form--register" action="#">
-    <h5 class="form__title">{{ hasAccount ? 'HỌC VIÊN ĐĂNG NHẬP' : 'ĐĂNG KÍ HỌC VIÊN'}}</h5>
+  <form
+    class="form form--register"
+    action="#">
+    <h5 class="form__title">{{ hasAccount ? 'HỌC VIÊN ĐĂNG NHẬP' : 'ĐĂNG KÍ HỌC VIÊN' }}</h5>
     <p class="form__lead">Etiam mollis risus et odio feugiat, sed iaculis mi pharetra. Vestibulum lorem risus, rhoncus at porta sed, elementum.</p>
-    <div class="el-input-wrapper" :class="{ hidden: hasAccount}">
-      <label for="name" class="form__label"><i class="fas fa-user"></i>Họ tên</label>
-      <el-input v-model="name" id="name" type="text"></el-input>
+    <div
+      :class="{ hidden: hasAccount}"
+      class="el-input-wrapper">
+      <label
+        for="name"
+        class="form__label"><i class="fas fa-user"/>Họ tên</label>
+      <el-input
+        id="name"
+        v-model="name"
+        type="text"/>
     </div>
     <div class="el-input-wrapper">
-      <label for="email" class="form__label"><i class="fas fa-envelope"></i>Email</label>
-      <el-input v-model="email" id="email" type="email"></el-input>
+      <label
+        for="email"
+        class="form__label"><i class="fas fa-envelope"/>Email</label>
+      <el-input
+        id="email"
+        v-model="email"
+        type="email"/>
     </div>
     <div class="el-input-wrapper">
-      <label for="password" class="form__label"><i class="fas fa-lock"></i>Mật khẩu</label>
-      <el-input v-model="password" id="password" type="password"></el-input>
+      <label
+        for="password"
+        class="form__label"><i class="fas fa-lock"/>Mật khẩu</label>
+      <el-input
+        id="password"
+        v-model="password"
+        type="password"/>
     </div>
-    <!-- <label for="confirmPassword" class="form__label">Confirm password</label>
-    <el-input placeholder="Please input" v-model="input" id="confirmPassword" type="password"></el-input> -->
-    <button class="btn btn--default btn--round form__btn" @click.prevent="login">{{ hasAccount ? 'ĐĂNG NHẬP' : 'ĐĂNG KÍ'}}</button>
-    <p class="form__note">{{ hasAccount ? 'Chưa' : 'Đã'}} có tài khoản?
-      <a class="text-semi" @click="hasAccount = !hasAccount">{{ !hasAccount ? 'Đăng nhập ngay' : 'Đăng kí ngay'}}</a>
+    <button
+      class="btn btn--default btn--round form__btn"
+      @click.prevent="login">{{ hasAccount ? 'ĐĂNG NHẬP' : 'ĐĂNG KÍ' }}</button>
+    <p class="form__note">{{ hasAccount ? 'Chưa' : 'Đã' }} có tài khoản?
+      <a
+        class="text-semi"
+        @click="hasAccount = !hasAccount">{{ !hasAccount ? 'Đăng nhập ngay' : 'Đăng kí ngay' }}</a>
     </p>
   </form>
 </template>

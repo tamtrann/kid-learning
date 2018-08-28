@@ -1,13 +1,21 @@
 <template>
   <div>
     <h3 class="exercise__title">{{ title }}</h3>
-    <countdown :time="timeLimitation * 60 * 1000" @countdownend="submit">
-      <p slot-scope="props" class="exercise__time">Thời gian còn lại：{{ props.minutes }} phút, {{ props.seconds }} giây.</p>
+    <countdown
+      :time="timeLimitation * 60 * 1000"
+      @countdownend="submit">
+      <p
+        slot-scope="props"
+        class="exercise__time">Thời gian còn lại：{{ props.minutes }} phút, {{ props.seconds }} giây.</p>
     </countdown>
     <exercise-question
       v-for="(exerciseQuestion, index) in exerciseQuestions"
-      :key="index" :question="exerciseQuestion" :index="index"></exercise-question>
-    <el-button type="success" @click="getScore">HOÀN TẤT</el-button>
+      :key="index"
+      :question="exerciseQuestion"
+      :index="index"/>
+    <button
+      class="btn btn--green"
+      @click="getScore"><i class="fas fa-check"/>HOÀN TẤT</button>
   </div>
 </template>
 

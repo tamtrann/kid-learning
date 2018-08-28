@@ -6,7 +6,10 @@
         @GetExercise="getExercise"
         @GetNotes="getNotes"
         @ShowNote="showNote"/>
-      <vk-offcanvas flipped overlay :show.sync="noteIsShow">
+      <vk-offcanvas
+        :show.sync="noteIsShow"
+        flipped
+        overlay>
         <note-taker
           :lessonId="notesId"
           @AddNote="onAddNote"/>
@@ -30,6 +33,13 @@ import MindmapModal from '~/components/MindmapModal'
 import ThreadModal from '~/components/ThreadModal'
 
 export default {
+  components: {
+    BookReader,
+    NoteTaker,
+    ExerciseModal,
+    MindmapModal,
+    ThreadModal
+  },
   data () {
     return {
       book: {},
@@ -38,13 +48,6 @@ export default {
       threads: [],
       notesId: ''
     }
-  },
-  components: {
-    BookReader,
-    NoteTaker,
-    ExerciseModal,
-    MindmapModal,
-    ThreadModal
   },
   mounted () {
     switch (this.$route.params.book) {

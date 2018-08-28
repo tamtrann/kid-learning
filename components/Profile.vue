@@ -1,35 +1,52 @@
 <template>
   <div class="profile">
-    <nuxt-link to="/dashboard" class="btn btn--back">
-      <i class="fas fa-arrow-left"></i>
+    <nuxt-link
+      to="/dashboard"
+      class="btn btn--back">
+      <i class="fas fa-arrow-left"/>
     </nuxt-link>
-    <div class="container" v-if="user">
+    <div
+      v-if="user"
+      class="container">
       <h1 class="profile__name">{{ user.name }}</h1>
-      <img :src="user.avatar.url" :alt="user-name" class="profile__avatar">
+      <img
+        :src="user.avatar.url"
+        :alt="user-name"
+        class="profile__avatar">
       <h2 class="profile__heading">Thông tin cá nhân</h2>
       <el-row :gutter="20">
         <el-col :sm="12">
-          <el-input placeholder="" v-model="user.username">
+          <el-input
+            v-model="user.username"
+            placeholder="">
             <template slot="prepend">Tên người dùng</template>
           </el-input>
-          <el-input placeholder="" v-model="user.name">
+          <el-input
+            v-model="user.name"
+            placeholder="">
             <template slot="prepend">Họ &amp; tên</template>
           </el-input>
-          <el-input placeholder="" v-model="user.email">
+          <el-input
+            v-model="user.email"
+            placeholder="">
             <template slot="prepend">Email</template>
           </el-input>
         </el-col>
         <el-col :sm="12">
-          <el-input placeholder="" v-model="user.address">
+          <el-input
+            v-model="user.address"
+            placeholder="">
             <template slot="prepend">Địa chỉ</template>
           </el-input>
-          <el-input placeholder="" v-model="user.type" disabled>
+          <el-input
+            v-model="user.type"
+            placeholder=""
+            disabled>
             <template slot="prepend">Loại người dùng</template>
           </el-input>
         </el-col>
       </el-row>
       <button class="btn btn--dark-gray profile__submit">Cập nhật</button>
-      <!-- <h2 class="profile__heading">Thành tích</h2> -->
     </div>
   </div>
 </template>

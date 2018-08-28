@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------------------------
 
 .v--modal {
-  padding: rem(30) 0;
+  padding: rem(30) 0 !important;
 
   & > div:not(.syllabus__card) {
     @extend .container;
@@ -25,5 +25,9 @@
 
   &-overlay {
     overflow-x: hidden;
+
+    .v--modal-background-click {
+      padding-bottom: 0;
+    }
   }
 }

@@ -2,62 +2,76 @@
   <div>
     <div class="class">
       <el-row :gutter="20">
-        <el-col :xs="12" :sm="6">
-          <div class="class__card" @click="show('6')">
+        <el-col
+          :xs="12"
+          :sm="6">
+          <div
+            class="class__card"
+            @click="show('6')">
             <span class="class__card__name text-neon-green">6</span>
           </div>
         </el-col>
-        <el-col :xs="12" :sm="6">
-          <div class="class__card" @click="show('7')">
+        <el-col
+          :xs="12"
+          :sm="6">
+          <div
+            class="class__card"
+            @click="show('7')">
             <span class="class__card__name text-neon-yellow">7</span>
           </div>
         </el-col>
-        <el-col :xs="12" :sm="6">
-          <div class="class__card" @click="show('8')">
+        <el-col
+          :xs="12"
+          :sm="6">
+          <div
+            class="class__card"
+            @click="show('8')">
             <span class="class__card__name text-neon-pink">8</span>
           </div>
         </el-col>
-        <el-col :xs="12" :sm="6">
-          <div class="class__card" @click="show('9')">
+        <el-col
+          :xs="12"
+          :sm="6">
+          <div
+            class="class__card"
+            @click="show('9')">
             <span class="class__card__name text-neon-purple">9</span>
           </div>
         </el-col>
       </el-row>
     </div>
     <div class="syllabus">
-      <!-- <modal name="6" :adaptive="true" width="80%" height="auto" :scrollable="true" :resizable="true">
-        <div class="syllabus__card">
-          <div class="syllabus__copy">
-            <h6 class="syllabus__badge syllabus__badge--brown">Giáo trình</h6>
-            <h2 class="syllabus__name text-brown">Lịch sử</h2>
-            <p class="syllabus__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam bibendum justo ut nibh interdum, sit amet molestie ex lacinia. Suspendisse sagittis nunc quis lorem ornare, et varius purus vulputate. Aenean vitae tempus tellus. Nam et mattis quam, vitae molestie mi. Proin ac orci orci.</p>
-            <button class="btn btn--brown btn--round" data-url="/course/history-6" data-modal="6" @click=goTo($event)>HỌC NGAY</button>
-            <button class="btn btn--brown btn--round" data-url="/timeline" data-modal="6" @click=goTo($event)>DÒNG SỰ KIỆN LỊCH SỬ</button>
-          </div>
-          <img src="~/assets/images/intro/history-1.jpg" alt="Lịch sử" class="syllabus__img">
-        </div>
-        <div class="syllabus__card">
-          <div class="syllabus__copy">
-            <h6 class="syllabus__badge syllabus__badge--green">Giáo trình</h6>
-            <h2 class="syllabus__name text-green">Địa lí</h2>
-            <p class="syllabus__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam bibendum justo ut nibh interdum, sit amet molestie ex lacinia. Suspendisse sagittis nunc quis lorem ornare, et varius purus vulputate. Aenean vitae tempus tellus. Nam et mattis quam, vitae molestie mi. Proin ac orci orci.</p>
-            <nuxt-link to="/course/geography-6" class="btn btn--green btn--round" type="submit">HỌC NGAY</nuxt-link>
-          </div>
-          <img src="~/assets/images/intro/geography-1.jpg" alt="Địa lí" class="syllabus__img">
-        </div>
-      </modal> -->
       <modal
-        width="80%" height="auto"
-        :adaptive="true" :scrollable="true" :resizable="true"
-        v-for="(item, index) in syllabus" :key="index" :name="item.grade">
-        <div class="syllabus__card"
-          v-for="(book, index) in item.books" :key="index">
+        v-for="(item, index) in syllabus"
+        :key="index"
+        :name="item.grade"
+        :adaptive="true"
+        :scrollable="true"
+        :resizable="true"
+        width="80%"
+        height="auto">
+        <div
+          v-for="(book, index) in item.books"
+          :key="index"
+          class="syllabus__card">
           <div class="syllabus__copy">
-            <h2 class="syllabus__name" :class="['text-' + book.theme]">{{ book.title }}</h2>
+            <h2
+              :class="['text-' + book.theme]"
+              class="syllabus__name">{{ book.title }}</h2>
             <p class="syllabus__description">{{ book.description }}</p>
-            <button class="btn btn--round" :class="['btn--' + book.theme]" v-for="(url, index) in book.urls" :key="index" :data-url="url.link" :data-modal="item.grade" @click="goTo($event)">{{ url.name }}</button>
+            <button
+              v-for="(url, index) in book.urls"
+              :key="index"
+              :data-url="url.link"
+              :data-modal="item.grade"
+              :class="['btn--' + book.theme]"
+              class="btn btn--round"
+              @click="goTo($event)">{{ url.name }}</button>
           </div>
-          <img :src="require(`~/assets/images/intro/${book.img}`)" :alt="book.title" class="syllabus__img">
+          <img
+            :src="require(`~/assets/images/intro/${book.img}`)"
+            :alt="book.title"
+            class="syllabus__img">
         </div>
       </modal>
     </div>

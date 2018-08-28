@@ -24,6 +24,5 @@ export const mutations = {
 export const getters = {
   notes: state => {
     return lessonId => state.notes.filter(note => note.lesson === lessonId || note.lesson.id === lessonId)
-    // return state.notes
   }
 }

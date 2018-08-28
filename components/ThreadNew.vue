@@ -1,9 +1,20 @@
 <template>
   <div class="thread">
-    <button class="btn btn--white btn--round thread__btn" @click="newThread = true">Câu hỏi mới</button>
-    <div class="thread__new" v-show="newThread">
-      <img :src="user.avatar.url" :alt="user.name" class="thread__avatar">
-      <el-input v-model="newContent" id="newContent" type="text" @keyup.enter.native="submitQuestion"></el-input>
+    <button
+      class="btn btn--white btn--round thread__btn"
+      @click="newThread = true">Câu hỏi mới</button>
+    <div
+      v-show="newThread"
+      class="thread__new" >
+      <img
+        :src="user.avatar.url"
+        :alt="user.name"
+        class="thread__avatar">
+      <el-input
+        id="newContent"
+        v-model="newContent"
+        type="text"
+        @keyup.enter.native="submitQuestion"/>
     </div>
   </div>
 </template>

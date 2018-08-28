@@ -9,13 +9,13 @@ import axios from 'axios'
 import Timeline from '~/components/Timeline'
 
 export default {
+  components: {
+    Timeline
+  },
   data () {
     return {
       milestones: []
     }
-  },
-  components: {
-    Timeline
   },
   mounted () {
     axios.get(`https://thesiseducation.herokuapp.com/milestone`).then(res => {

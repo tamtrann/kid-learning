@@ -1,40 +1,46 @@
 <template>
   <div class="question">
-    <p class="question__text">{{ index + 1 }}. <span v-html="question.content"></span></p>
-    <img :src="question.image" class="question__img" v-if="question.image">
+    <p class="question__text">{{ index + 1 }}. <span v-html="question.content"/></p>
+    <img
+      v-if="question.image"
+      :src="question.image"
+      class="question__img">
     <template v-if="question.type === 'oneChoice'">
-      <el-radio-group v-model="single" @change="checkSingle">
-        <el-radio v-for="(item, index) in question.answers"
-                  :key="index" :label="item"
-                  :class="{ 'el-radio--success': submitted && item.isCorrect,
-                            'el-radio--danger': submitted && !item.isCorrect,
-                            'disabled': submitted }">{{ item.content }}</el-radio>
+      <el-radio-group
+        v-model="single"
+        @change="checkSingle">
+        <el-radio
+          v-for="(item, index) in question.answers"
+          :key="index"
+          :label="item"
+          :class="{ 'el-radio--success': submitted && item.isCorrect,
+                    'el-radio--danger': submitted && !item.isCorrect,
+                    'disabled': submitted }">{{ item.content }}</el-radio>
       </el-radio-group>
     </template>
     <template v-if="question.type === 'multipleChoice'">
-      <el-checkbox-group v-model="multiple" @change="checkMultiple">
-        <el-checkbox v-for="(item, index) in question.answers"
-                    :key="index" :label="item"
-                    :class="{ 'el-checkbox--success': submitted && item.isCorrect,
-                              'el-checkbox--danger': submitted && !item.isCorrect,
-                              'disabled': submitted }">{{ item.content }}</el-checkbox>
+      <el-checkbox-group
+        v-model="multiple"
+        @change="checkMultiple">
+        <el-checkbox
+          v-for="(item, index) in question.answers"
+          :key="index"
+          :label="item"
+          :class="{ 'el-checkbox--success': submitted && item.isCorrect,
+                    'el-checkbox--danger': submitted && !item.isCorrect,
+                    'disabled': submitted }">{{ item.content }}</el-checkbox>
       </el-checkbox-group>
     </template>
     <template v-if="question.type === 'fillInTheBlank'">
       <el-input
-        v-for="(item, index) in question.answers" :key="index"
-        :placeholder="index + 1" v-model="blank[index]"
-        @change="checkBlank"
+        v-for="(item, index) in question.answers"
+        :key="index"
+        :placeholder="index + 1"
+        v-model="blank[index]"
         :class="{ 'el-input--success': submitted && item.isCorrect,
                   'el-input--danger': submitted && !item.isCorrect,
-                  'disabled': submitted }"></el-input>
-      <!-- <el-radio-group v-model="single" @change="checkSingle">
-        <el-radio v-for="(item, index) in question.answers"
-                  :key="index" :label="item"
-                  :class="{ 'el-radio--success': submitted && item.isCorrect,
-                            'el-radio--danger': submitted && !item.isCorrect,
-                            'disabled': submitted }">{{ item.content }}</el-radio>
-      </el-radio-group> -->
+                  'disabled': submitted }"
+        @change="checkBlank"/>
     </template>
   </div>
 </template>
@@ -43,14 +49,6 @@
 import { mapGetters, mapMutations } from 'vuex'
 
 export default {
-  data () {
-    return {
-      single: null,
-      multiple: [],
-      blank: [],
-      isCorrect: false
-    }
-  },
   props: {
     question: {
       type: Object,
@@ -61,10 +59,29 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      single: null,
+      multiple: [],
+      blank: [],
+      isCorrect: false
+    }
+  },
   computed: {
     ...mapGetters({
       submitted: 'exercise/submitted'
     })
+  },
+  watch: {
+    isCorrect (val, oldVal) {
+      if (val === !oldVal) {
+        if (this.isCorrect) {
+          this.setGrade(1)
+        } else {
+          this.setGrade(-1)
+        }
+      }
+    }
   },
   methods: {
     ...mapMutations({
@@ -81,17 +98,6 @@ export default {
     },
     checkBlank () {
       JSON.stringify(this.question.answers) === JSON.stringify(this.blank) ? this.isCorrect = true : this.isCorrect = false
-    }
-  },
-  watch: {
-    isCorrect (val, oldVal) {
-      if (val === !oldVal) {
-        if (this.isCorrect) {
-          this.setGrade(1)
-        } else {
-          this.setGrade(-1)
-        }
-      }
     }
   }
 }

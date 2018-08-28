@@ -18,11 +18,12 @@ export const mutations = {
   },
   UPDATE_MINDMAP (state, payload) {
     let foundIndex = state.mindmapList.findIndex(mindmap => mindmap.id === payload.id)
-    state.mindmapList[foundIndex].nodes = payload.nodes.slice()
-    state.mindmapList[foundIndex].connections = payload.connections.slice()
+    state.mindmapList[foundIndex] = JSON.parse(JSON.stringify(payload))
   }
 }
 
 export const getters = {
-  mindmapList: state => state.mindmapList
+  mindmapList: state => {
+    return keyword => keyword ? state.mindmapList.filter(mindmap => mindmap.name.toLowerCase().includes(keyword.toLowerCase())) : state.mindmapList
+  }
 }

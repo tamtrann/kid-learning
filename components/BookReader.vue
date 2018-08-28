@@ -2,42 +2,82 @@
   <div class="book">
     <div class="book-sidebar">
       <div class="book-buttons">
-        <nuxt-link to="/dashboard" class="btn">
-          <i class="fas fa-arrow-left"></i>
+        <nuxt-link
+          to="/dashboard"
+          class="btn">
+          <i class="fas fa-arrow-left"/>
         </nuxt-link>
-        <button class="btn" @click="showNote">
-          <i class="fas fa-sticky-note"></i>
+        <button
+          class="btn"
+          @click="showNote">
+          <i class="fas fa-sticky-note"/>
         </button>
-        <button class="btn" @click="$modal.show('mindmap')">
-          <i class="fas fa-project-diagram"></i>
+        <button
+          class="btn"
+          @click="$modal.show('mindmap')">
+          <i class="fas fa-project-diagram"/>
         </button>
-        <button class="btn" @click="$modal.show('thread')">
-          <i class="fas fa-question"></i>
+        <button
+          class="btn"
+          @click="$modal.show('thread')">
+          <i class="fas fa-question"/>
         </button>
       </div>
       <div class="book-lessons">
-        <el-collapse v-model="activePart" accordion>
+        <el-collapse
+          v-model="activePart"
+          accordion>
           <el-collapse-item
             v-for="part in book.parts"
-            :key="part.id" :title="part.name" :name="part.name"
+            :key="part.id"
+            :title="part.name"
+            :name="part.name"
             class="el-collapse-part">
-            <el-collapse v-model="activeChapter" accordion>
+            <el-collapse
+              v-model="activeChapter"
+              accordion>
               <el-collapse-item
                 v-for="chapter in part.chapters"
-                :key="chapter.id" :title="chapter.name" :name="chapter.name"
+                :key="chapter.id"
+                :title="chapter.name"
+                :name="chapter.name"
                 class="el-collapse-chapter">
-                <el-collapse v-model="page" accordion @change="getNotes">
+                <el-collapse
+                  v-model="page"
+                  accordion
+                  @change="getNotes">
                   <el-collapse-item
                     v-for="lesson in chapter.lessons"
-                    :key="lesson.id" :title="lesson.name" :name="lesson.page" :id="lesson.id"
-                    class="el-collapse-lesson" ref="lesson">
+                    ref="lesson"
+                    :key="lesson.id"
+                    :title="lesson.name"
+                    :name="lesson.page"
+                    :id="lesson.id"
+                    class="el-collapse-lesson">
                     <p class="book-intro">{{ lesson.introduction }}</p>
-                    <button
-                      v-if="lesson.exercises" v-for="(exercise, index) in lesson.exercises" :key="index"
-                      class="btn btn--simple" @click="getExercise(exercise)"><i class="far fa-file-alt"></i>
-                      {{ exercise.title }}
-                    </button>
-                    <!-- <thread-modal v-if="lesson.questions" :threads="lesson.questions"/> -->
+                    <template v-if="lesson.exercises">
+                      <button
+                        v-for="(exercise, index) in lesson.exercises"
+                        :key="index"
+                        class="btn btn--simple"
+                        @click="getExercise(exercise)"><i class="far fa-file-alt"/>
+                        {{ exercise.title }}
+                      </button>
+                    </template>
+                    <template v-if="lesson.references">
+                      <div
+                        v-for="reference in lesson.references"
+                        :key="reference.id">
+                        <a
+                          v-for="(keyword, index) in reference.keyword"
+                          :key="index"
+                          :href="keyword.url"
+                          class="btn btn--simple">
+                          <i class="fas fa-book"/>
+                          {{ keyword.name }}
+                        </a>
+                      </div>
+                    </template>
                   </el-collapse-item>
                 </el-collapse>
               </el-collapse-item>
@@ -48,17 +88,23 @@
     </div>
     <div class="book-reader">
       <iframe
+        ref="book"
         :src="'/books/' + this.$route.params.book +'/index.html#p=' + page"
         type="application/pdf"
         frameborder="0"
-        ref="book"
-      ></iframe>
+      />
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    book: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
       activePart: '',
@@ -67,7 +113,13 @@ export default {
       page: 0
     }
   },
-  props: ['book'],
+  watch: {
+    page (val, oldVal) {
+      if (val && val !== oldVal) {
+        this.$refs.book.contentWindow.location.reload()
+      }
+    }
+  },
   methods: {
     getExercise (exercise) {
       this.$emit('GetExercise', exercise)
@@ -81,13 +133,6 @@ export default {
       this.$emit('ShowNote')
     }
   },
-  watch: {
-    page (val, oldVal) {
-      if (val && val !== oldVal) {
-        this.$refs.book.contentWindow.location.reload()
-      }
-    }
-  }
 }
 </script>
 

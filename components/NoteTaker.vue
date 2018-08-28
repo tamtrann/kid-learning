@@ -4,7 +4,11 @@
     <note-taker-new-note @AddNote="onAddNote"/>
     <!-- {{ lessonId }} -->
     <ul class="notes__list">
-      <li is="note-taker-note" v-for="note in notes(lessonId)" :key="note.id" :note="note"></li>
+      <li
+        is="note-taker-note"
+        v-for="note in notes(lessonId)"
+        :key="note.id"
+        :note="note"/>
       <span class="notes__remaining">{{ remaining }} ghi chú</span>
     </ul>
   </div>
@@ -20,9 +24,12 @@ export default {
     NoteTakerNote,
     NoteTakerNewNote
   },
-  props: [
-    'lessonId'
-  ],
+  props: {
+    lessonId: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
     ...mapGetters({
       notes: 'note/notes'

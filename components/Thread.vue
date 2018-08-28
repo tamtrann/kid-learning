@@ -1,7 +1,12 @@
 <template>
   <div class="thread">
-    <div class="thread__topic" v-if="thread.user">
-      <img :src="thread.user.avatar.url" :alt="thread.user.name" class="thread__avatar">
+    <div
+      v-if="thread.user"
+      class="thread__topic" >
+      <img
+        :src="thread.user.avatar.url"
+        :alt="thread.user.name"
+        class="thread__avatar">
       <div class="thread__responses__item__body">
         <span class="thread__user">{{ thread.user.name }}</span>
         <p class="thread__content">{{ thread.content }}</p>
@@ -9,8 +14,14 @@
       </div>
     </div>
     <ul class="thread__responses">
-      <li v-for="item in thread.answers" :key="item.id" class="thread__responses__item">
-        <img :src="item.user.avatar.url" :alt="item.user.name" class="thread__avatar">
+      <li
+        v-for="item in thread.answers"
+        :key="item.id"
+        class="thread__responses__item">
+        <img
+          :src="item.user.avatar.url"
+          :alt="item.user.name"
+          class="thread__avatar">
         <div class="thread__responses__item__body">
           <span class="thread__user">{{ item.user.name }}</span>
           <p class="thread__content">{{ item.content }}</p>
@@ -18,8 +29,15 @@
         </div>
       </li>
       <li class="thread__responses__item thread__responses__item--new">
-        <img :src="user.avatar.url" :alt="user.name" class="thread__avatar">
-        <el-input v-model="newContent" id="newContent" type="text" @keyup.enter.native="submitResponse"></el-input>
+        <img
+          :src="user.avatar.url"
+          :alt="user.name"
+          class="thread__avatar">
+        <el-input
+          id="newContent"
+          v-model="newContent"
+          type="text"
+          @keyup.enter.native="submitResponse"/>
       </li>
     </ul>
   </div>
@@ -29,13 +47,14 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  props: {
+    thread: Object,
+    required: true
+  },
   data () {
     return {
       newContent: ''
     }
-  },
-  props: {
-    thread: Object
   },
   computed: {
     ...mapGetters({
