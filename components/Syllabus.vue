@@ -87,7 +87,7 @@ export default {
         books: [{
           id: '5b15e581e8db3027119530bc',
           title: 'Lịch sử',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam bibendum justo ut nibh interdum, sit amet molestie ex lacinia. Suspendisse sagittis nunc quis lorem ornare, et varius purus vulputate. Aenean vitae tempus tellus. Nam et mattis quam, vitae molestie mi. Proin ac orci orci.',
+          description: 'Chương trình lịch sử lớp 6 gồm 3 phần. Phần mở đầu giới thiệu các bài học chung sơ lược về lịch sử. Phần I giới thiệu lịch sử thế giới từ khi loài người xuất hiện đến cuối thời cổ đại. Phần II nói về lịch sử Việt Nam giới thiệu lịch sử dân tộc từ thời nguyên thuỷ đến thế kỷ X.',
           urls: [{
             name: 'Học ngay',
             link: 'course/history-6'
@@ -100,7 +100,7 @@ export default {
         }, {
           id: '5b2dbbc07a45863cf280ef50',
           title: 'Địa lí',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam bibendum justo ut nibh interdum, sit amet molestie ex lacinia. Suspendisse sagittis nunc quis lorem ornare, et varius purus vulputate. Aenean vitae tempus tellus. Nam et mattis quam, vitae molestie mi. Proin ac orci orci.',
+          description: 'Chương trình địa lý lớp 6 gồm 2 chương lớn là Trái Đất và các thành phần tự nhiên của Trái Đất. Trong đó, chương Trái đất sẽ học về vị trí, hình dạng, kích thước, các hiện tượng của trái đất,….chương các thành phần tự nhiên của Trái đất sẽ cung cấp những kiến thức về tác động của nội lực, ngoại lực, khí hậu trên trái đất,…',
           urls: [{
             name: 'Học ngay',
             link: 'course/geography-6'
@@ -318,6 +318,7 @@ export default {
     letter-spacing: 2px;
     margin-top: rem(20);
     margin-bottom: rem(10);
+    text-transform: uppercase;
   }
 }
 </style>

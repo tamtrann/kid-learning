@@ -5,8 +5,8 @@
         <el-row :gutter="20">
           <el-col :sm="10">
             <div class="hero__main">
-              <h1 class="hero__heading">E-School</h1>
-              <p class="hero__lead">Nulla aliquam volutpat nisi, et blandit est gravida non. In vel tempus mauris. In hendrerit, leo et molestie iaculis, turpis sem pharetra erat, a vestibulum nibh metus eu eros.</p>
+              <h1 class="hero__heading">E-SCHOOL</h1>
+              <p class="hero__lead">E-school là một hệ thống học tập mới với nhiều công cụ bổ ích giúp cho bạn tiếp thu kiến thức rất nhanh và hiệu qủa. Hãy trải nghiệm cùng e - School phát triển tương lai bạn nhé!</p>
               <div class="btn-wrapper">
                 <nuxt-link
                   to="/dashboard"
@@ -25,8 +25,8 @@
         <div class="subsection subsection--narrow">
           <el-row :gutter="20">
             <el-col :sm="14">
-              <h2 class="section__heading">Tại sao chọn Kid Learning?</h2>
-              <p class="section__text">Mauris fermentum rutrum erat eget dapibus. Aliquam erat volutpat. Maecenas ut neque odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+              <h2 class="section__heading">Tại sao chọn E-School?</h2>
+              <p class="section__text">E - school có những tính năng tuyệt vời giúp cho bạn thay đổi phương pháp học tập và nâng cao khả năng tự học một cách rất hiệu quả. Bạn có thể mang e - school đi khắp mọi nơi, học tập ở mọi chỗ mà bạn muốn. Không phải cuốn sách giáo khoa khô khan mà bạn đang sử dụng, thay vào đó, e-school gửi bạn những cuốn sách với nhiều hiệu ứng mới lạ và độc đáo. Bên cạnh đó, những công cụ hỗ trợ cùng với những dòng sự kiện lịch sử và bản đồ địa lý thế giới trực quan của e-school cũng sẽ là nơi giúp cho bạn mở mang kiến thức và tầm hiểu biết của mình.</p>
             </el-col>
             <el-col :sm="10"/>
           </el-row>
@@ -56,7 +56,7 @@
                 Mô phỏng thực tế giáo trình</h4>
               <p
                 v-scroll-reveal
-                class="section__text">Mauris fermentum rutrum erat eget dapibus. Aliquam erat volutpat. Maecenas ut neque odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                class="section__text">Với cách mô tả sách giáo khoá mới lạ và độc đáo cùng với những công cụ hay ho sẽ giúp bạn cảm thấy việc học thú vị hơn bao giờ hết.</p>
               <h4
                 v-scroll-reveal
                 class="section__heading section__heading--icon">
@@ -66,7 +66,7 @@
                 Lớp học tương tác</h4>
               <p
                 v-scroll-reveal
-                class="section__text" >Mauris fermentum rutrum erat eget dapibus. Aliquam erat volutpat. Maecenas ut neque odio.</p>
+                class="section__text">E - school cung cấp cho bạn kênh giải đáp mắc mắc để chúng hơn. có thể cùng nhau học tập hiệu quả hơn.</p>
             </el-col>
           </el-row>
         </div>
@@ -82,7 +82,7 @@
                 Hệ thống bài tập phong phú</h4>
               <p
                 v-scroll-reveal
-                class="section__text">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris auctor vestibulum tortor eu tincidunt.</p>
+                class="section__text">Hệ thống bài tập đa dạng và phong phú thuộc các chương và các bài học cùng với bộ câu hỏi gồm nhiều dạng câu hỏi khác nhau sẽ giúp cho bạn củng cố kiến thức và kiểm tra lại trình độ của bản thân.</p>
               <h4
                 v-scroll-reveal
                 class="section__heading section__heading--icon">
@@ -92,7 +92,7 @@
                 Hỗ trợ trực tiếp từ giáo viên</h4>
               <p
                 v-scroll-reveal
-                class="section__text">Integer dapibus metus ac dignissim suscipit. Ut eu lorem vel nisi tincidunt varius. Mauris libero ipsum, lacinia quis pellentesque id, volutpat sit amet ante.</p>
+                class="section__text">Khi bạn gặp vấn đề khó hiểu trong bài học, bạn có thể gửi câu hỏi ngay đến kênh hỏi đáp của e - school để giáo viên có thể hỗ trợ nhanh chóng giải đáp hết những khúc mắc cho bạn.</p>
             </el-col>
             <el-col :sm="10">
               <div

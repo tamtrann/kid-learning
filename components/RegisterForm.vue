@@ -3,7 +3,7 @@
     class="form form--register"
     action="#">
     <h5 class="form__title">{{ hasAccount ? 'HỌC VIÊN ĐĂNG NHẬP' : 'ĐĂNG KÍ HỌC VIÊN' }}</h5>
-    <p class="form__lead">Etiam mollis risus et odio feugiat, sed iaculis mi pharetra. Vestibulum lorem risus, rhoncus at porta sed, elementum.</p>
+    <p class="form__lead">{{ hasAccount ? 'Giờ học đến rồi! Đăng nhập để cùng nhau học tập nhé!' : 'Đăng ký ngay vào hệ thống của e - school để trải nghiệm những tính năng tuyệt vời cùng chúng mình nhé!' }}</p>
     <div
       :class="{ hidden: hasAccount}"
       class="el-input-wrapper">

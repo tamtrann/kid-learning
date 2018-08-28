@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="container navbar-container">
       <span class="navbar-brand">
-        <nuxt-link to="/dashboard">E-School</nuxt-link>
+        <nuxt-link to="/dashboard">E-SCHOOL</nuxt-link>
       </span>
       <el-dropdown
         v-if="user"
