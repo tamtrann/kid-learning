@@ -11,7 +11,7 @@
       <h1 class="profile__name">{{ user.name }}</h1>
       <img
         :src="user.avatar.url"
-        :alt="user-name"
+        :alt="user.name"
         class="profile__avatar">
       <h2 class="profile__heading">Thông tin cá nhân</h2>
       <el-row :gutter="20">
@@ -26,11 +26,6 @@
             placeholder="">
             <template slot="prepend">Họ &amp; tên</template>
           </el-input>
-          <el-input
-            v-model="user.email"
-            placeholder="">
-            <template slot="prepend">Email</template>
-          </el-input>
         </el-col>
         <el-col :sm="12">
           <el-input
@@ -39,14 +34,13 @@
             <template slot="prepend">Địa chỉ</template>
           </el-input>
           <el-input
-            v-model="user.type"
-            placeholder=""
-            disabled>
-            <template slot="prepend">Loại người dùng</template>
+            v-model="user.email"
+            placeholder="">
+            <template slot="prepend">Email</template>
           </el-input>
         </el-col>
       </el-row>
-      <button class="btn btn--dark-gray profile__submit">Cập nhật</button>
+      <button class="btn btn--default profile__submit">Cập nhật</button>
     </div>
   </div>
 </template>
@@ -67,13 +61,13 @@ export default {
 .profile {
   @include flex-center;
 
-  background-color: $color-dark-blue;
   min-height: 100vh;
   position: relative;
 
   &__avatar {
-    border: 4px solid $color-white;
+    border: 4px solid darken($color: $color-white, $amount: 10%);
     border-radius: 100%;
+    box-shadow: $box-shadow-light;
     display: block;
     margin: 0 auto;
     width: 120px;
@@ -81,12 +75,12 @@ export default {
   }
 
   &__name {
-    color: lighten($color: $color-gray, $amount: 40%);
+    color: $color-text;
     text-align: center;
   }
 
   &__heading {
-    color: lighten($color: $color-gray, $amount: 40%);
+    color: $color-text;
   }
 
   &__submit {
@@ -95,25 +89,15 @@ export default {
   }
 }
 
-.el-input-group__prepend {
-  background-color: $color-dark-gray;
-  border: 1px solid rgba($color: $color-white, $alpha: 0.2);
-  border-right: none;
-  color: rgba($color: $color-white, $alpha: 0.8);
-  width: 150px;
-}
-
 .el-input {
   margin-bottom: rem(20);
 
-  &__inner {
-    background-color: rgba($color: $color-dark-gray, $alpha: 0.8);
-    border: 1px solid rgba($color: $color-white, $alpha: 0.2);
-    color: $color-white;
+  &-group {
+    &__prepend {
+      border: 1px solid rgba($color: $color-white, $alpha: 0.2);
+      border-right: none;
+      width: 150px;
+    }
   }
-}
-
-.el-input.is-disabled .el-input__inner {
-  background-color: $color-gray;
 }
 </style>

@@ -72,19 +72,30 @@
   }
 
   &--back {
-    color: $color-white;
+    box-shadow: none;
+    color: $color-text;
     position: absolute;
     top: 0;
     left: 0;
+
+    &:hover {
+      box-shadow: none;
+      color: $color-text;
+    }
   }
 
   &:focus {
-    // box-shadow: none;
     outline: none;
   }
 
   & ~ .btn {
-    margin-left: 1rem;
+    display: block;
+    margin-top: 1rem;
+
+    @include media(">=lg") {
+      display: inline-block;
+      margin-left: 1rem;
+    }
   }
 
   i {
